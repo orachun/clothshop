@@ -1,0 +1,154 @@
+body
+{
+	color: #333;
+	margin: 50px 0px 0px;
+	padding-bottom: 50px;
+	font: 14px/150% Arial,Helvetica,sans-serif,tahoma;
+}
+
+.button
+{
+	border: 1px solid #AFBB81;
+	background-color: #DFEBB1;
+	cursor: pointer;
+	margin-top: 10px;
+	display: inline-block;
+	padding: 5px;
+}
+.button:hover
+{
+	background-color: #EFFBC1;
+}
+
+#logo-container
+{
+	background-color:#DFEBB1;
+	vertical-align: middle;
+	height: 40px;
+	width: 200px;
+	position: fixed;
+	top: 0px;
+	left: 100px;
+	padding: 2px 0px 0px;
+	border: solid 1px #CFDBA1;
+    z-index: 9998;
+    text-align: center;
+}
+
+#top-bar #user-menu
+{
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+#body
+{
+	min-width: 950px;
+    margin: 0px 10px;
+    overflow: hidden;
+}
+
+#main-slide-show-container
+{
+	width: 930px;
+	margin: auto;
+}                
+#main-slide-show-container #main-slide-show
+{
+	display: none;
+}
+
+#content
+{
+	padding: 0px 10px;
+    overflow: hidden;
+}
+
+.right-tab
+{
+	position: fixed;
+	width: 400px;
+	height: 300px;
+	z-index: 2000;
+	right: -360px;
+}
+.right-tab .handle
+{
+	float: left;
+	width: 50px;
+	height: 50px;	
+	display: inline-block;
+	padding: 2px;
+	border-right: none;
+}
+
+.right-tab .handle img	
+{
+	width: 48px;
+	height: 48px;	
+}
+.right-tab .right-tab-content
+{
+	display: inline-block;
+	background-color: #DFEBB1;	
+	width: 250px;
+	height: 300px;
+	border: 1px solid #CFDBA1;
+	padding: 5px 40px 5px 5px;
+	overflow-y: auto;
+}
+.right-tab .right-tab-content h1
+{
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.user-tab
+{
+	top: 10px;
+}
+.shopping-bag-summary-tab
+{
+	top: 70px;
+}
+.buy-info-tab
+{
+	top: 130px;
+}
+.about-us-tab
+{
+	top: 190px;
+}
+
+.login-form .form-item
+{
+	margin: 5px 0px;
+}
+
+.login-form .label
+{
+	width: 100px;
+	display: inline-block;
+}
+.login-form .form-item input,
+.login-form .form-item textarea
+{
+	width: 120px;
+}
+.login-form .form-item-login-btn .login-btn
+{
+	margin-top: 10px;
+	display: inline-block;
+	padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+

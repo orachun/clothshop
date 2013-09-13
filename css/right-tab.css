@@ -1,0 +1,83 @@
+.right-tab
+{
+    position: fixed;
+    width: 550px;
+    height: 300px;
+    z-index: 2000;
+    right: -480px;
+}
+.right-tab .handle
+{
+    float: left;
+    width: 60px;
+    height: 50px;	
+    display: inline-block;
+    padding: 2px;
+    border-right: none;
+    margin-top: 10px;
+    margin-right: 0px;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 10px;
+}
+
+.right-tab .handle img	
+{
+    width: 36px;
+    height: 36px;	
+}
+.right-tab .right-tab-content-container
+{
+    display: inline-block;
+    background-color: #D893B0;	
+    width: 440px;
+    height: 380px;
+    padding: 3px;
+    /*border: 1px solid #CFDBA1;*/
+}
+.right-tab .right-tab-content
+{
+    background-color: #F9E7EF;	
+    width: 260px;
+    height: 374px;
+    overflow-y: auto;
+    padding: 3px;
+}
+.right-tab .right-tab-content h1
+{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.user-tab{top: 5px;}
+.shopping-bag-summary-tab{top: 70px;}
+.shopping-bag-summary-tab, .shopping-bag-summary-tab .right-tab-content-container{height: 500px;}
+.shopping-bag-summary-tab .right-tab-content{height: 494px;}
+.buy-info-tab{top: 135px;}
+.payment-transfer-tab{top: 200px;}
+.contact-us-tab{top: 265px;}
+
+.shopping-bag-summary .selected-item img
+{
+    width: 60px;
+    vertical-align: top;
+}
+.shopping-bag-summary .selected-item .detail 
+{
+    font-size: 0.9em;
+    width: 180px;
+    display: inline-block;
+}
+.shopping-bag-summary .selected-item .detail .label
+{
+    font-weight: bold;
+}
+.shopping-bag-summary .selected-item .detail #qty
+{
+    width: 30px;
+}
+.shopping-bag-summary .selected-item .detail .btn
+{
+    width: 20px;
+    height: 20px;
+}

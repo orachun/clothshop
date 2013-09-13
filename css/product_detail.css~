@@ -1,0 +1,110 @@
+.product-detail-gallery
+{
+	width: 500px;
+	float:left;
+}
+
+.product-detail-gallery .jcarousel-skin-pika,
+.product-detail-gallery .jcarousel-clip-horizontal
+{
+	width: 480px;
+	overflow: hidden;
+}
+
+.product-detail-gallery .pika-stage
+{
+	background: none;
+	border: none;
+	height: 450px;
+}
+
+.product-detail-content
+{
+    overflow: hidden;	
+    width: auto;
+    padding-left: 20px;
+}
+
+.product-detail-container
+{
+	background-color: rgb(193, 230, 229);
+	border: solid 1px rgb(173, 210, 209);
+	margin-bottom: 5px;
+	text-align: left;
+	padding: 5px;
+}
+
+.product-detail-container .close-btn-container
+{
+	float:right;
+	margin-right: 10px;
+}
+
+.product-detail
+{
+    overflow: hidden;
+}
+
+.product-detail .pname
+{
+	margin: 20px 0px;
+	font-size: 2em;
+}
+.product-detail .pdesc
+{
+	font-size: 1.2em;
+	margin: 5px 0px;
+}
+.product-detail .pprice
+{
+	margin: 5px 0px;
+}
+.product-detail .form-item
+{
+	margin: 5px 0px;
+}
+.product-detail .form-item .label
+{
+	width: 70px;
+	display: inline-block;
+}
+.product-detail .form-item .radio-item
+{
+	width: 50px;
+	display: inline-block;
+}
+.product-detail .form-item-quantity .quantity
+{
+	width: 20px;
+}
+
+.product-detail .buy-form
+{
+	margin: 30px auto;
+	border: solid 1px black;
+	padding: 20px;
+	width: 370px;
+	border: solid 1px rgb(153, 190, 189);
+}
+.product-detail .form-item-buy-btn
+{
+	border: solid 1px #CFDBA1;	
+	background-color: #DFEBB1;	
+	width: 150px;
+	font-size: 1.5em;
+	margin: 20px auto 0px;
+	text-align: center;
+	padding: 10px 0px;
+	cursor: pointer;
+}
+.product-detail .form-item-buy-btn:hover
+{
+	background-color: #EFFBC1;	
+}
+.product-detail .form-item-buy-btn img
+{
+	height: 40px;
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-bottom: 8px;
+}
