@@ -31,6 +31,7 @@ $(function(){
         }, 300, function() {
             $.get(base_url+'index.php/product/detail/' + pid + '/true', function(data) {
                 container.append(data);
+				container.css('height', 'auto');
                 container.waiting('done');
             });
         });

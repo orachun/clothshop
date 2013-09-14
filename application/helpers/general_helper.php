@@ -8,7 +8,12 @@ function ___config($key = NULL)
         'items_per_page' => 50,
         'items_per_row' => 5,
         'admin_email' => 'orachun.chun@gmail.com',
-        'upload_file_delim' => 'z(]9(s[1m'
+        'upload_file_delim' => '(][)',
+		'grid_item_thumb_width' => 178,
+		'grid_item_thumb_height' => 234,
+		'thumb_width' => 80,
+		'thumb_height' => 80,
+		'watermark' => base_url().'images/logo.png'
     );
     if(empty($key))
     {
@@ -84,8 +89,7 @@ if(!function_exists('list_file_path')) {
         $res = array();
         for($i=0;$i<count($files);$i++)
         {
-            if($files[$i] != 'thumb.jpg')
-                $res[] = base_url().$dir.$files[$i];
+            $res[] = base_url().$dir.$files[$i];
         }
         return $res;
     }
@@ -127,12 +131,6 @@ function download($url, $localFile) {
         echo $e->getMessage();
         return false;
 	}
-}
-
-function create_thumb($img_url, $width, $height, $thumb_name)
-{
-    $url = 'http://proxy.boxresizer.com/convert?resize='.$width.'x'.$height.'&source='.urlencode($img_url);
-    download($url, $thumb_name);
 }
 
 function is_expired($expired_date)

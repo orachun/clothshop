@@ -22,17 +22,10 @@
         <label><input name="size" type="checkbox" value="XL"/>XL</label>
         <label><input name="size" type="checkbox" value="XXL"/>XXL</label>
         <div>Color</div>
-        <label><input name="color" type="checkbox" value="red"/>แดง</label>
-        <label><input name="color" type="checkbox" value="green"/>เขียว</label>
-        <label><input name="color" type="checkbox" value="blue"/>น้ำเงิน</label>
-        <label><input name="color" type="checkbox" value="lightblue"/>ฟ้า</label>
-        <label><input name="color" type="checkbox" value="orange"/>ส้ม</label>
-        <label><input name="color" type="checkbox" value="purple"/>ม่วง</label>
-        <label><input name="color" type="checkbox" value="white"/>ขาว</label>
-        <label><input name="color" type="checkbox" value="black"/>ดำ</label>
-        <label><input name="color" type="checkbox" value="gray"/>เทา</label>
-        <label><input name="color" type="checkbox" value="pink"/>ชมพู</label>
-        <label><input name="color" type="checkbox" value="brown"/>น้ำตาล</label>
+        <?php foreach($colors as $cen => $cth):?>
+        <label><input name="color" type="checkbox" value="<?php echo $cen.':'.$cth;?>"/><?php echo $cth;?></label>
+        <?php endforeach;?>
+        
         <div>Supplier</div>
         <select name="supplier">
             <?php foreach($suppliers as $c):?>
@@ -47,6 +40,7 @@
 
 <script type="text/javascript">
     $('.add-product .submit-btn').click(function(){
+        $('.add-product').waiting();
         
         var size = '';
         $('.add-product input[name="size"]:checked').each(function(index, element){
@@ -57,7 +51,9 @@
             color += $(element).val()+";";
         });
         $.post(base_url+'index.php/admin/add_product_submit', $('.add-product form').serialize()+"&color="+color+"&size="+size, function(data){
-            $('.add-product').parent().load(base_url+'index.php/admin/add_product_form');
+            $('.add-product').parent().load(base_url+'index.php/admin/add_product_form', function(){
+                $('.add-product').waiting('done');
+            });
         });
     });
 </script>

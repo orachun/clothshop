@@ -52,3 +52,65 @@ function slide(container_selector, thumb_selector, items_per_row, delay, animati
         container.addClass('thumb-slider-inited');
     });
 }
+
+
+function gallery(container_selector, img_selector)
+{
+	$(container_selector).each(function(){
+		var container = $(this);
+		if(container.hasClass('gallery-inited')) return;
+		
+		container.append('<div class="gallery-viewport ui-corner-all"></div>');
+		container.append('<div class="gallery-thumb-list"></div>');
+		var viewport = container.find('.gallery-viewport');
+		var thumb_list = container.find('.gallery-thumb-list');
+		container.find(img_selector).each(function(i, e){
+			
+			if($(e).width()>$(e).height())
+			{
+				$(e).addClass('image-wide');
+			}
+			else
+			{
+				$(e).addClass('image-high');
+			}
+			var img = $(e).clone();
+			$(img).addClass('gallery-image');
+			$(img).addClass('gallery-image-'+i);
+			if($(img).width()>$(img).height())
+			{
+				$(img).addClass('image-wide');
+			}
+			else
+			{
+				$(img).addClass('image-high');
+			}
+			viewport.append(img);
+			thumb_list.append(e);
+			$(e).addClass('gallery-thumb');
+			$(e).attr('forindex', i);
+			
+		});
+		thumb_list.find('.gallery-thumb').wrap('<div style="display:inline-block;"><div class="gallery-thumb-container"/></div>')
+		viewport.find('.gallery-image').hide(0);
+		viewport.find('.gallery-image-0').addClass('gallery-current-image');
+		viewport.find('.gallery-image-0').show(0);
+		thumb_list.find('.gallery-thumb-container:first').addClass('gallery-current-thumb');
+		thumb_list.find('.gallery-thumb-container').click(function(){
+			var index = $(this).find('.gallery-thumb').attr('forindex');
+			var img = viewport.find('.gallery-image-'+index);
+			var current = viewport.find('.gallery-current-image');
+			current.removeClass('gallery-current-image');
+			thumb_list.find('.gallery-current-thumb').removeClass('gallery-current-thumb');
+			var thumb = $(this);
+			current.hide('fade', 200, function(){
+				img.addClass('gallery-current-image');
+				img.show('fade', 200);
+				thumb.addClass('gallery-current-thumb');
+			});
+			
+		});
+		
+		container.addClass('gallery-inited');	
+	});
+}

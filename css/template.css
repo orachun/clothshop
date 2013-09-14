@@ -137,7 +137,7 @@ vertical-align: bottom;}
 
 .product-showcase-tabs { background: none;}
 .product-showcase-tabs .ui-tabs-panel,
-.product-showcase-tabs div,
+.product-showcase-tabs .thumb-slider,
 .product-showcase-tabs ul
 {
     background: none;

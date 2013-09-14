@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/ci';
+$config['base_url']	= 'http://localhost/~orachun/ci';
 $config['base_path'] = '/home/orachun/public_html/ci';
 
 /*

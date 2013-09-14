@@ -9,6 +9,7 @@
         <script src="<?php echo base_url(); ?>js/jquery-ui-1.10.3.custom.js"></script>
         <script src="<?php echo base_url();?>libs/jquery.form.js"></script>
         <script src="<?php echo base_url(); ?>js/upload.js"></script>
+        <script src="<?php echo base_url(); ?>libs/jquery.waiting/jquery.waiting.js"></script>
         <script type="text/javascript">
             base_url = '<?php echo base_url();?>';
             $(function(){
@@ -26,6 +27,7 @@
               <li><a href="<?php echo base_url(); ?>index.php/admin/delivering">Delivering</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/payment_checking">Payment Checking</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/slideshow">Main Slideshow</a></li>
+              <li><a href="<?php echo base_url(); ?>index.php/admin/page">Page</a></li>
             </ul>
         </div>
     </body>

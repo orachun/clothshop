@@ -1,15 +1,10 @@
 <div class="product-detail product-detail-<?php echo $product_id; ?>">
     <div class="product-detail-gallery">
-        <ul class="imagegallery">
-            <?php for ($i = 0; $i < count($images); $i++): ?>
-                <li><img height="460" class="ui-corner-all" src="<?php echo $images[$i]; ?>"/></li>
-            <?php endfor; ?>
-        </ul>
-        <div id="bx-pager">
-            <?php for ($i = 0; $i < count($images); $i++): ?>
-                <a class="ui-corner-all" data-slide-index="<?php echo $i;?>" href=""><img width="50" src="<?php echo $images[$i]; ?>" /></a>
-            <?php endfor; ?>
-        </div>
+		
+		<?php for ($i = 0; $i < count($images); $i++): ?>
+		<img src="<?php echo $images[$i];?>" />
+		<?php endfor;?>
+
     </div>
     <div class="product-detail-content">
         <div class="pname"><a href="<?php echo base_url();?>index.php/product/detail/<?php echo $product_id;?>" target="_blank"><?php echo $name; ?></a></div>
@@ -28,10 +23,10 @@
 
             <div class="form-item form-item-color"><label class="label">สี</label>
                 <?php
-                foreach ($avail_colors as $c)
+                foreach ($avail_colors as $c => $cth)
                 {
                     $id = 'color-'.$c;
-                    echo '<input type="radio" id="'.$id.'" name="color"  value="' . $c . '"  /><label for="'.$id.'">' . th_color($c) . '</label>';
+                    echo '<input type="radio" id="'.$id.'" name="color"  value="' . $c . '"  /><label for="'.$id.'">' . $cth . '</label>';
                 }
                 ?>
             </div>
@@ -83,29 +78,9 @@ endif;
 
 <script type="text/javascript">
     $(function() {
-//        $('.product-detail-<?php echo $product_id; ?> .product-detail-gallery .image-gallery').PikaChoose(
-//                {
-//                    transition: [1],
-//                    carousel: true,
-//                    autoPlay: false,
-//                    showCaption: false,
-//                    carouselOptions: {wrap: 'circular'},
-//                    thumbOpacity: 1.0
-//                }
-//        );
-        $('.product-detail .product-detail-gallery .imagegallery').bxSlider({
-            pagerCustom: '#bx-pager'
-         });
          
-
-//        $('.product-detail .form-item-buy-btn').click(function() {
-//            if (!$(".opening-tab").is(".shopping-bag-summary-tab"))
-//            {
-//                closeTab($(".opening-tab"));
-//            }
-//            openTab($(".shopping-bag-summary-tab"));
-//        });
-
+		 gallery('.product-detail .product-detail-gallery', 'img');
+		 
         $('.product-detail .buy-form .form-item-color input[type="radio"]:first').prop('checked', true);
         $('.product-detail .buy-form .form-item-size input[type="radio"]:first').prop('checked', true);
         $('.product-detail .buy-form .form-item-quantity input[type="radio"]:first').prop('checked', true);

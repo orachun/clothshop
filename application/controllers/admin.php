@@ -48,6 +48,7 @@ class Admin extends CI_Controller
         $data = array();
         $data['suppliers'] = $this->Product_model->get_supplier();
         $data['cats'] = $this->Product_model->get_cat();
+        $data['colors'] = $this->Others_model->color();
         $this->load->view('admin/add_product', $data);
     }
     public function add_product_submit()
@@ -136,5 +137,34 @@ class Admin extends CI_Controller
     public function del_slideshow()
     {
         $this->db->delete('slideshow', array('slide_id' => $this->input->post('slide-id')));
+    }
+    
+    public function page()
+    {
+        $data['pages'] = $this->db->get('page')->result_array();
+        $this->load->view('admin/page.php', $data);
+    }
+    public function add_page()
+    {
+        $this->db->insert('page', array(
+            'name' => $this->input->post('name'),
+            'link_name' => $this->input->post('link_name'),
+            'content' => $this->input->post('content'),
+            'edited_datetime' => date('Y-m-d t:i:s'),
+        ));
+    }
+    public function edit_page()
+    {
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('page', array(
+            'name' => $this->input->post('name'),
+            'link_name' => $this->input->post('link_name'),
+            'content' => $this->input->post('content'),
+            'edited_datetime' => date('Y-m-d t:i:s'),
+        ));
+    }
+    public function del_page()
+    {
+        $this->db->delete('page', array('id' => $this->input->post('id')));
     }
 }

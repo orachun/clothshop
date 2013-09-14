@@ -18,15 +18,23 @@ class Product_model extends CI_Model
         if ($query->num_rows() > 0)
         {
             $data = $query->row_array();
-            $data['images'] = list_product_img('images/products/'.$pid.'/'); 
+            $data['images'] = list_product_img('images/products/'.$pid.'/imgs/');
+            $data['thumbs'] = list_product_img('images/products/'.$pid.'/thumbs/'); 
             $data['thumb'] = base_url().'images/products/'.$pid.'/thumb.jpg';
-            $this->db->select('color');
-            $this->db->where('product_id', $pid); 
-            $data['avail_colors'] = to_flat_array($this->db->get('product_color')->result_array(), 'color');
-
-            $this->db->select('size');
-            $this->db->where('product_id', $pid); 
-            $data['avail_sizes'] = to_flat_array($this->db->get('product_size')->result_array(), 'size');
+            $colors = $this->_get_product_prop($pid, 'color');
+            $data['avail_colors'] = array();
+            foreach($colors as $c)
+            {
+                $data['avail_colors'][$c['value']] = $c['value2'];
+            }
+            
+            $sizes = $this->_get_product_prop($pid, 'size');
+            $data['avail_sizes'] = array();
+            foreach($sizes as $c)
+            {
+                $data['avail_sizes'][] = $c['value'];
+            }
+            
             return $data;
         }
         else
@@ -61,17 +69,6 @@ class Product_model extends CI_Model
         {
             $products[$i]['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
         }
-//        $data = array();
-//		for($i=1;$i<=10;$i++)
-//		{
-//			$data[] = array(
-//				'pid' => 1,
-//				'name' => 'แม๊กซี่เดรส ผ้าชีฟองพิมพ์ลาย',
-//				'img' => base_url().'images/products/'.'1'.'/thumb.jpg',
-//				'price' => '480.-'
-//			);
-//            
-//		}
         return $products;
     }
     public function total_product($cat = '-1', $keyword = 'none')
@@ -122,6 +119,7 @@ class Product_model extends CI_Model
     }
     public function add_product($p)
     {
+		$this->load->helper('image');
         $this->db->insert('product', array(
             'name' => $p['name'],
             'desc' => $p['desc'],
@@ -142,32 +140,28 @@ class Product_model extends CI_Model
         foreach($p['size'] as $s)
         {
             if(empty($s)) continue;
-            $this->db->insert('product_size', array(
-                'product_id' => $pid,
-                'size' => $s,
-            ));
+            $this->_add_product_prop($pid, 'size', $s);
         }
         foreach($p['color'] as $c)
         {
             if(empty($c)) continue;
-            $this->db->insert('product_color', array(
-                'product_id' => $pid,
-                'color' => $c,
-            ));
+            $this->_add_product_prop($pid, 'color', explode(':',$c));
         }
         
         $img_dir = ___config('base_path').'images/products/'.$pid.'/';
         $old = umask(0); 
-        mkdir($img_dir, 0777, TRUE);
+        mkdir($img_dir.'imgs', 0777, TRUE);
+        mkdir($img_dir.'thumbs', 0777, TRUE);
         umask($old);
         $img_urls = preg_split("/\r\n|\n|\r/", $p['imgs']);
-        foreach($img_urls as $u)
+        foreach($img_urls as $i=>$u)
         {
             if(empty($u)) continue;
             $u = trim($u);
-            download($u, $img_dir.basename($u));
+			
+			image_download($u, $img_dir.'imgs/'.$i.'.jpg', $img_dir.'thumbs/'.$i.'.jpg');
         }
-        create_thumb($img_urls[0], 178, 234, $img_dir.'thumb.jpg');
+		image_grid_item_prepare($img_urls[0], $img_dir.'thumb.jpg');
     }
     
     
@@ -183,5 +177,34 @@ class Product_model extends CI_Model
 		}
         $data['name'] = 'random'.  random_string();
 		return $this->load->view('product/product_showcase', $data, TRUE);
+    }
+    
+    private function _add_product_prop($pid, $key, $values = array())
+    {
+        if(!is_array($values))
+        {
+            $values = array($values);
+        }
+        $record = array('product_id' => $pid, 'key' => $key, 'value' => $values[0]);
+        if(count($values)>1)
+        {
+            $record['value2'] = $values[1];
+        }
+        if(count($values)>2)
+        {
+            $record['value3'] = $values[2];
+        }
+        $this->db->insert('product_property', $record);
+    }
+    
+    private function _get_product_prop($pid, $key)
+    {
+        $result = $this->db->get_where('product_property', 
+                array('product_id' => $pid, 'key' => $key))->result_array();
+        if(count($result) == 1)
+        {
+            $result = $result[0];
+        }
+        return $result;
     }
 }

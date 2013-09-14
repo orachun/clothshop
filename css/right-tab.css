@@ -81,3 +81,10 @@
     width: 20px;
     height: 20px;
 }
+.buy-info-tab .right-tab-content {text-align: center;}
+.buy-info-tab .right-tab-content .button
+{
+	width: 200px;
+	margin: 0px auto 5px;
+	
+}
