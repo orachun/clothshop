@@ -2,13 +2,21 @@
 .thumb-slider .ui-tabs-nav { display: none;}
 
 
-.gallery-inited .gallery-viewport{width: inherit; height: 500px; background-color:white; border: 2px solid #F9D1E2;display:table-cell;
-   vertical-align:middle;text-align: center;}
+.gallery-inited .gallery-viewport{width: inherit; height: 500px; background-color:white; border: 2px solid #F9D1E2;}
 
 .gallery-inited .image-wide{width: 100%; height: auto;}
 .gallery-inited .image-high{width: auto; height: 100%;}
 .gallery-inited .gallery-image{max-width: 100%; max-height: 490px;}
 .gallery-inited .gallery-thumb-list{width: 100%; text-align: center;margin-top:10px;}
-.gallery-inited .gallery-thumb-container{width: 70px; height: 70px;display: table-cell;vertical-align: middle; text-align: center;background-color:white;border: 1px solid lightgrey;padding:2px;margin: 0px 5px;}
-.gallery-inited .gallery-current-thumb{border-color: #F9D1E2;}
-.gallery-inited .gallery-thumb{max-width: 100%; max-height: 100%;}
+.gallery-inited .gallery-thumb-container{width: 70px; height: 70px;background-color:white;border: 1px solid lightgrey;padding:2px;margin: 0px 2px;}
+.gallery-inited .gallery-current-thumb{border-color: #ff99cc;}
+.gallery-inited .gallery-thumb{max-width: 100%; max-height: 100%;cursor: pointer;}
+
+.gallery-inited .gallery-controller{position: relative; height: 0px; z-index: 100;}
+.gallery-inited .gallery-controller .prev-btn,.gallery-inited .gallery-controller .next-btn
+{width:32px; height: 32px; display:inline-block;position:relative;top:234px;opacity:0.5;
+filter:alpha(opacity=50);cursor:pointer;}
+.gallery-inited .gallery-controller .prev-btn
+{background: url(../images/icons/prev.png); position:absolute; left:10px;}
+.gallery-inited .gallery-controller .next-btn
+{background: url(../images/icons/next.png); position:absolute; right: 10px;}
