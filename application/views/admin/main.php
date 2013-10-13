@@ -10,6 +10,8 @@
         <script src="<?php echo base_url();?>libs/jquery.form.js"></script>
         <script src="<?php echo base_url(); ?>js/upload.js"></script>
         <script src="<?php echo base_url(); ?>libs/jquery.waiting/jquery.waiting.js"></script>
+        <script src="<?php echo base_url(); ?>libs/tinymce/tinymce.min.js"></script>
+        <script src="<?php echo base_url(); ?>js/admin.js"></script>
         <script type="text/javascript">
             base_url = '<?php echo base_url();?>';
             $(function(){

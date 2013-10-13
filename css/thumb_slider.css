@@ -8,9 +8,9 @@
 .gallery-inited .image-high{width: auto; height: 100%;}
 .gallery-inited .gallery-image{max-width: 100%; max-height: 490px;}
 .gallery-inited .gallery-thumb-list{width: 100%; text-align: center;margin-top:10px;}
-.gallery-inited .gallery-thumb-container{width: 70px; height: 70px;background-color:white;border: 1px solid lightgrey;padding:2px;margin: 0px 2px;}
+.gallery-inited .gallery-thumb-container{width: 70px; height: 70px;background-color:white;border: 1px solid lightgrey;padding:2px;margin: 0px 2px; display:table-cell;vertical-align: middle;}
 .gallery-inited .gallery-current-thumb{border-color: #ff99cc;}
-.gallery-inited .gallery-thumb{max-width: 100%; max-height: 100%;cursor: pointer;}
+.gallery-inited .gallery-thumb{max-width: 100%; max-height: 100%;cursor: pointer; vertical-align: middle;}
 
 .gallery-inited .gallery-controller{position: relative; height: 0px; z-index: 100;}
 .gallery-inited .gallery-controller .prev-btn,.gallery-inited .gallery-controller .next-btn

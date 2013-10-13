@@ -60,12 +60,12 @@ function gallery(container_selector, img_selector)
 		var container = $(this);
 		if(container.hasClass('gallery-inited')) return;
 		container.append('<div class="gallery-controller"><span class="prev-btn"/><span class="next-btn"/></div>');
-		container.append('<div class="gallery-viewport ui-corner-all"><div style="width: inherit; height: interit;display: table-cell;vertical-align: middle; text-align: center;"/></div>');
+		container.append('<div class="gallery-viewport ui-corner-all"><div style="width: inherit; height: inherit;display: table-cell;vertical-align: middle; text-align: center;"/></div>');
 		container.append('<div class="gallery-thumb-list"></div>');
 		var viewport = container.find('.gallery-viewport > div');
 		var thumb_list = container.find('.gallery-thumb-list');
 		container.find(img_selector).each(function(i, e){
-			
+			$(e).on("load", function(){
 			if($(e).width()>$(e).height())
 			{
 				$(e).addClass('image-wide');
@@ -73,18 +73,18 @@ function gallery(container_selector, img_selector)
 			else
 			{
 				$(e).addClass('image-high');
-			}
+			}});
 			var img = $(e).clone();
 			$(img).addClass('gallery-image');
 			$(img).addClass('gallery-image-'+i);
-			if($(img).width()>$(img).height())
-			{
-				$(img).addClass('image-wide');
-			}
-			else
-			{
-				$(img).addClass('image-high');
-			}
+//			if($(img).width()>$(img).height())
+//			{
+//				$(img).addClass('image-wide');
+//			}
+//			else
+//			{
+//				$(img).addClass('image-high');
+//			}
 			viewport.append(img);
 			thumb_list.append(e);
 			$(e).addClass('gallery-thumb');

@@ -9,7 +9,7 @@
 </style>
 <div class="page-list">
     <?php foreach($pages as $p):?>
-    <div class="page-container">
+    <div class="page-container" pid="<?php echo $p['id'];?>">
         <button class="del-page" pid="<?php echo $p['id'];?>">Del</button>
         <a href="<?php echo base_url().'index.php/page/content/'.$p['link_name'];?>" target="_blank"><?php echo $p['name'];?></a>
         <button class="edit-btn">Edit</button>
@@ -26,7 +26,8 @@
     <form class="add-page">
         Name: <input type="text" name="name"/><br/>
         Link: <input type="text" name="link_name"/><br/>
-        <textarea name="content"></textarea><br/>
+        <textarea id="new-page-content" name="content"></textarea><br/>
+		<a href="http://www.picdee.com/" target="_blank">Upload Image</a><br/>
         <input type="submit" value="Add"/>
     </form>
 </div>
@@ -40,6 +41,8 @@
             {
                 $(this).parent().find('.edit-container').show();
                 $(this).html('Hide');
+				var id = $(this).parents(".page-container").attr("pid");
+				initEditor('.page-list .page-container[pid="'+id+'"] .page-content');
             }
             else
             {
@@ -50,6 +53,7 @@
         
         $('.page-list .add-page').submit(function(){
             $('.page-list').waiting();
+//			$('.page-list .add-page #new-page-content').val(tinyMCE.get('new-page-content').getContent());
             $.post(base_url+'index.php/admin/add_page', $(this).serialize(), function(){
                 $('.page-list').parent().load(base_url+'index.php/admin/page');
             });
@@ -61,5 +65,7 @@
                 btn.parent().remove();
             });
         });
+		
+		initEditor('.page-list .add-page #new-page-content');
     });
 </script>
