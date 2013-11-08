@@ -14,7 +14,7 @@ foreach (___config() as $k => $v)
 }
 ?>
         </script>  
-        <title>Prettiya: pre-order ชุดสไตล์เกาหลีน่ารักๆ - <?php echo $title ?></title>
+        <title>Prittila: pre-order ชุดสไตล์เกาหลีน่ารักๆ - <?php echo $title ?></title>
 		<?php echo link_tag(base_url() . 'css/custom-theme/jquery-ui-1.10.3.custom.min.css'); ?>
 
         <script src="<?php echo base_url(); ?>js/jquery-1.9.1.js"></script>
@@ -71,7 +71,8 @@ foreach (___config() as $k => $v)
         <div id="topbar">
             <div id="logo-container">
                 <a href="<?php echo base_url() ?>index.php" title="หน้าแรก">
-                    <img id="logo" src="<?php echo base_url(); ?>images/logo.png" height="100"/>
+<!--                    <img id="logo" src="<?php echo base_url(); ?>images/logo.png" height="100"/>-->
+					*PRITTILA*
                 </a>
             </div>
             <div id="search-tools" class="ui-corner-right">

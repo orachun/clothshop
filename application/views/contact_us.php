@@ -5,16 +5,27 @@
         width: 16px;
         height: 16px;
     }
+	.contact-us .contact-form .form-item input
+	{
+		width: 180px;
+		height: 30px;
+		margin-bottom: 5px;
+	}
+	.contact-us .contact-form .form-item textarea
+	{
+		width: 180px;
+		height: 60px;
+	}
 </style>
 <div class="contact-us">
     <h1>ติดต่อเรา</h1>
     <form class="contact-form">
         <?php if($is_logged_in == FALSE):?>
-        <div class="form-item form-item-name"><label class="label">ชื่อ</label><div><input name="name" type="text"/></div></div>
-        <div class="form-item form-item-email"><label class="label">อีเมล์</label><div><input name="email" type="text"/></div></div>
-        <div class="form-item form-item-tel"><label class="label">โทร.</label><div><input name="tel" type="text"/></div></div>
+        <div class="form-item form-item-name"><div><input name="name" type="text" placeholder="ชื่อ"/></div></div>
+        <div class="form-item form-item-email"><div><input name="email" type="text" placeholder="อีเมล์"/></div></div>
+        <div class="form-item form-item-tel"><div><input name="tel" type="text" placeholder="หมายเลขโทรศัพท์"/></div></div>
         <?php endif;?>
-        <div class="form-item form-item-msg"><label class="label">ข้อความ</label><div><textarea name="msg"></textarea></div></div>
+        <div class="form-item form-item-msg"><div><textarea name="msg" placeholder="ข้อความ"></textarea></div></div>
         <div class="form-item form-item-send-btn"><span class="send-btn ui-corner-all button">ส่งข้อความ</span></div>
     </form>
 

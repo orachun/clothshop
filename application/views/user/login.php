@@ -12,20 +12,25 @@
     .login-form .form-item input,
     .login-form .form-item textarea
     {
-        width: 120px;
+        width: 180px;
+		height: 30px;
     }
 </style>
 <div class="login-form">
 	<form class="login">
 		<h1>ลงชื่อเข้าใช้</h1>
-		<div class="form-item form-item-email"><label class="label">อีเมล์</label><div><input name="email" type="text"/></div></div>
-		<div class="form-item form-item-pass"><label class="label">รหัสผ่าน</label><div><input name="pass" type="password"/></div></div>
+		<div class="form-item form-item-email">
+			<div><input name="email" type="text" placeholder="อีเมล์"/></div>
+		</div>
+		<div class="form-item form-item-pass">
+			<div><input name="pass" type="password" placeholder="รหัสผ่าน" /></div>
+		</div>
 		<div class="form-item form-item-login-btn">
 			<span class="login-btn ui-corner-all button">ลงชื่อเข้าใช้</span>
 			<span class="register-btn ui-corner-all button">สมัครสมาชิก</span>
 		</div>
 	</form>
-	
+
 	<form class="register">
 		<h1>สมัครสมาชิก</h1>
 		<div class="form-item form-item-email"><label class="label">อีเมล์</label><div><input name="email" type="text"/></div></div>

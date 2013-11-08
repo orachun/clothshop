@@ -2,7 +2,9 @@
 .thumb-slider .ui-tabs-nav { display: none;}
 
 
-.gallery-inited .gallery-viewport{width: inherit; height: 500px; background-color:white; border: 2px solid #F9D1E2;}
+.gallery-inited .gallery-viewport{width: inherit; height: 500px; 
+/*				 background-color:white; border: 2px solid #F9D1E2;*/
+}
 
 .gallery-inited .image-wide{width: 100%; height: auto;}
 .gallery-inited .image-high{width: auto; height: 100%;}

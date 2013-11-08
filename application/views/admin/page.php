@@ -51,6 +51,15 @@
             }
         });
         
+		
+		$('.page-list .page-container .edit-container').submit(function(){
+			$('.page-list').waiting();
+			$.post(base_url+'index.php/admin/edit_page', $(this).serialize(), function(){
+                $('.page-list').parent().load(base_url+'index.php/admin/page');
+            });
+			return false;
+		});
+		
         $('.page-list .add-page').submit(function(){
             $('.page-list').waiting();
 //			$('.page-list .add-page #new-page-content').val(tinyMCE.get('new-page-content').getContent());

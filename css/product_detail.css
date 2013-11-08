@@ -13,8 +13,7 @@
 
 .product-detail-container
 {
-	background-color: #E0ECF1;
-	border: solid 1px rgb(173, 210, 209);
+	background-color: #FFFFFF;
 	margin-bottom: 5px;
 	text-align: left;
 	padding: 5px;
@@ -68,7 +67,7 @@
 .product-detail .buy-form
 {
 	margin: 30px auto;
-	border: solid 1px black;
+	border: 1px solid #CDB2BB;
 	padding: 20px;
 	width: auto;
 	border: solid 1px rgb(153, 190, 189);
