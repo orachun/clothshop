@@ -118,22 +118,22 @@ class User_model extends CI_Model
         
         $query = $this->db->get_where('_customer_coupon_display', array('customer_id' => $cid));
         
-        $coupon = array();
-        if ($query->num_rows() > 0)
-        {
-            $coupon = $query->result_array();
-            for($i=0;$i<count($coupon);$i++)
-            {
-                if($only_valid_coupon && ($coupon[$i]['remain'] == 0 || is_expired($coupon[$i]['expired_date'])))
-                {
-                    unset($coupon[$i]);
-                    continue;
-                }
-                $coupon[$i]['icon'] = base_url().'images/discount_icons/'.$coupon[$i]['amount'].'.png';
-                
-            }
-            $coupon = array_values($coupon);
-        }
+		$coupon = $query->result_array();
+		$count = count($coupon);
+		for($i=0;$i<$count;$i++)
+		{
+			if($only_valid_coupon && 
+					($coupon[$i]['remain'] == 0 || is_expired($coupon[$i]['expired_date'])))
+			{
+				unset($coupon[$i]);
+				continue;
+			}
+			else
+			{
+				$coupon[$i]['icon'] = base_url().'images/discount_icons/'.$coupon[$i]['amount'].'.png';
+			}
+		}
+		$coupon = array_values($coupon);
         
         return $coupon;
     }

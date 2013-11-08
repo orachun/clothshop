@@ -1,3 +1,13 @@
+<style>
+	.shopping-bag-summary .selected-item
+	{
+		margin-top: 5px;
+		padding-top: 5px;
+		border-top: dashed #CDB2BB 1px;
+	}
+</style>
+
+
 <div class="shopping-bag-summary">
 	<h1>สินค้าที่เลือก</h1>
 <div class="total">
@@ -18,10 +28,10 @@
         </div>
 	</div>
 <?php endforeach;?>
-<div class="total">
+<!--<div class="total">
     <a href="<?php echo base_url();?>index.php/shopping_bag/order_review" class="button order-btn ui-corner-all" target="_blank">ส่งคำสั่งซื้อสินค้า</a><br/>
     รวม <?php echo number_format($this->cart->total(),2); ?> บาท
-</div>
+</div>-->
 </div>
 
 <script type="text/javascript">

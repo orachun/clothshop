@@ -1,6 +1,6 @@
 .right-tab
 {
-    position: fixed;
+    position: fixed !important;
     width: 550px;
     height: 300px;
     z-index: 2000;

@@ -37,16 +37,24 @@
 	<h1>ยินดีต้อนรับ<br/>คุณ <?php echo $fullname;?></h1>
     
     <div>
+    <a class="button ui-corner-all" href="<?php echo base_url();?>index.php/user/user_area/0" target="_blank">ข้อมูลส่วนตัว</a><br/>
     <a class="button ui-corner-all" href="<?php echo base_url();?>index.php/user/user_area/1" target="_blank">รายละเอียดคูปองส่วนลด</a><br/>
     <a class="button ui-corner-all" href="<?php echo base_url();?>index.php/user/user_area/2" target="_blank">สถานะการสั่งซื้อสินค้า</a><br/>
     <span class="logout-btn button ui-corner-all">ลงชื่อออก</span>
-    
-        <div class="section-header">คูปองส่วนลดที่มีอยู่</div>
-        <?php foreach($coupons as $c):?>
-        <div class="coupon">
-            <?php echo $c['coupon_left'];?> x <div class="coupon-icon-container ui-corner-all"  title="<?php echo $c['summary'];?>"><img class="coupon-icon ui-corner-all" src="<?php echo $c['icon'];?>"/></div>
-        </div>
-        <?php endforeach;?>
+
+	<div class="section-header">คูปองส่วนลดที่มีอยู่</div>
+
+	<?php if (count($coupons) > 0):
+		foreach ($coupons as $c):
+			?>
+			<div class="coupon">
+			<?php echo $c['coupon_left']; ?> x <div class="coupon-icon-container ui-corner-all"  title="<?php echo $c['summary']; ?>"><img class="coupon-icon ui-corner-all" src="<?php echo $c['icon']; ?>"/></div>
+			</div>
+		<?php endforeach;
+	else:
+		?>
+		<div>ไม่มีคูปองที่ใช้ได้</div>
+	<?php endif; ?>
     </div>
     
 </div>

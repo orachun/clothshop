@@ -110,7 +110,7 @@ class Shopping_bag extends CI_Controller
                 $options['size'], 
                 th_color($options['color']), 
                 '<input class="qty" type="text" value="'.$items['qty'].'" rowid="'.$items['rowid'].'" readonly="readonly"/>'.
-                '<span class="button change-qty-btn ui-corner-all" rowid="'.$items['rowid'].'">แก้ไข</span>',
+                ' <span class="button change-qty-btn ui-corner-all" rowid="'.$items['rowid'].'">แก้ไข</span>',
                 '<span class="unit-price">'.number_format($items['price'], 2).'</span> บาท',
                 '<span class="sub-total">'.number_format($items['qty']*$items['price'], 2).'</span> บาท',
                 //'<span class="ui-corner-all button edit-btn" rowid="'.$items['rowid'].'">แก้ไขจำนวน</span> 
@@ -164,22 +164,6 @@ class Shopping_bag extends CI_Controller
         
         $data['delivering'] = $this->db->get_where('delivery_type', array('is_discarded'=>'N'))->result_array();
         
-//        $data['delivering'] = array(
-//            'general' => array(
-//                'id' => 1,
-//                'name' => 'พัสดุลงทะเบียน',
-//                'cost' => '',
-//                'unit_cost' => '20',
-//                'free_threshold' => '5',
-//            ),
-//            'EMS' => array(
-//                'id' => 2,
-//                'name' => 'EMS',
-//                'cost' => '',
-//                'unit_cost' => '50',
-//                'free_threshold' => '2',
-//            )
-//        );
         foreach($data['delivering'] as $key=>$d)
         {
             if($data['item_count'] >= $d['free_threshold'])

@@ -40,7 +40,7 @@ function image_prepare($img_path, $result_path = NULL, $width = 0, $height = 0, 
 		$h = $img->getHeight();
 		$watermark = WideImage::load(___config('watermark'))
 				->resize($w-0.1*$w, $h-0.1*$h);
-		$img = $img->merge($watermark, 'center', 'bottom-10%', 50);
+		$img = $img->merge($watermark, 'center', 'bottom-5%', 30);
 	}
 	
 	if($save)

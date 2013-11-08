@@ -15,7 +15,7 @@ $(function(){
         lastElement.after('<div class="product-detail-container ui-corner-all" pid="' + pid + '"><div class="close-btn-container"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span></div></div>');
 
         $(".close-btn-container").click(function() {
-            $(this).parents(".product-detail-container").slideUp(400, function() {
+            $(this).parents(".product-detail-container").slideUp(1000, function() {
                 $(this).remove();
             });
         });
@@ -24,11 +24,11 @@ $(function(){
         container.waiting();
         $('html, body').animate({
             scrollTop: container.offset().top - 20
-        }, 300);
+        }, 1000);
         container.animate({
 //            "height": $(window).height() - 50 + "px",
             "height": "600px",
-        }, 300, function() {
+        }, 1000, function() {
             $.get(base_url+'index.php/product/detail/' + pid + '/true', function(data) {
                 container.append(data);
 				container.css('height', 'auto');

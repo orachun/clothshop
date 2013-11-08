@@ -5,11 +5,12 @@
         text-align: right;
         vertical-align: baseline;
         border: none;
+		background: none;
     }
 </style>
 
 <div class="ordered-items">
-    <div class="section-header">สินค้าที่เลือกทั้งหมด <?php echo $item_count; ?> ชิ้น</div>
+    <div class="section-header">สินค้าที่เลือกทั้งหมด <span id="item-count"><?php echo $item_count; ?></span> ชิ้น</div>
     <div class="table-container">
         <?php echo $table; ?>
     </div>
@@ -20,14 +21,24 @@
 
 <script type="text/javascript">
 
+	var reload = function(notif){
+		
+	};
+
+
+
     $('.order-review .ordered-items .del-btn').click(function(){
         var rowid = $(this).attr('rowid');
             $('.order-review').waiting();
         $.post(base_url+'index.php/shopping_bag/update_qty/'+rowid+'/0', function(){
-            $('.ordered-items').parent().load(base_url+'index.php/shopping_bag/ordered_items');
-            
-            $('.order-review').waiting('done');
-            notify('success', 'ลบสินค้า','ลบสินค้าที่เลือกเรียบร้อยค่ะ')
+            $('.coupon-deliver').parent().load(base_url+'index.php/shopping_bag/coupon_deliver', 
+				function(){
+					$('.ordered-items').parent().load(base_url+'index.php/shopping_bag/ordered_items', 
+						function(){
+						$('.order-review').waiting('done');
+						notify('success', 'ลบสินค้า','ลบสินค้าที่เลือกเรียบร้อยค่ะ')
+					});
+				});
         });
     });
     
@@ -56,10 +67,15 @@
             var rowid = $(this).attr('rowid');
             console.log(base_url+'index.php/shopping_bag/update_qty/'+rowid+'/'+qty);
             $.post(base_url+'index.php/shopping_bag/update_qty/'+rowid+'/'+qty, function(){
-                $('.ordered-items').parent().load(base_url+'index.php/shopping_bag/ordered_items');
-                $('.order-review').waiting('done');
-                notify('success', 'แก้ไขสินค้าที่เลือก', 'แก้ไขจำนวนสินค้าที่เลือกเรียบร้อยค่ะ');
-            });
+				$('.coupon-deliver').parent().load(base_url+'index.php/shopping_bag/coupon_deliver', 
+				function(){
+					$('.ordered-items').parent().load(base_url+'index.php/shopping_bag/ordered_items', 
+						function(){
+						$('.order-review').waiting('done');
+						notify('success', 'แก้ไขสินค้าที่เลือก', 'แก้ไขจำนวนสินค้าที่เลือกเรียบร้อยค่ะ');
+					});
+				});
+			});
         }
     });
     

@@ -19,8 +19,8 @@
 
 .product-grid-item
 {
-    width: 178px;
-    height: 234px;
+    width: 200px;
+    height: 267px;
     padding: 1px;
     display: inline-block;
     margin: auto;
@@ -49,8 +49,8 @@
 .product-grid-item img
 {
 	top: -30px;
-    width: 178px;
-    height: 234px;
+    width: 200px;
+    height: 267px;
     z-index: 0;
 }
 

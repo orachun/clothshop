@@ -120,6 +120,8 @@ class Product_model extends CI_Model
     public function add_product($p)
     {
 		$this->load->helper('image');
+		
+		//Save product data
         $this->db->insert('product', array(
             'name' => $p['name'],
             'desc' => $p['desc'],
@@ -135,8 +137,9 @@ class Product_model extends CI_Model
         $pid = $this->db->insert_id();
         
         $this->db->where('product_id', $pid);
-        $this->db->update('product', array('display_id' => 'P'.date('ymd').'-'.sprintf('%04d',$pid))); 
+        $this->db->update('product', array('display_id' => 'P'.date('md').'-'.$pid)); 
         
+		//Save product available sizes and colors
         foreach($p['size'] as $s)
         {
             if(empty($s)) continue;
@@ -148,12 +151,14 @@ class Product_model extends CI_Model
             $this->_add_product_prop($pid, 'color', explode(':',$c));
         }
         
+		//Save product images
         $img_dir = ___config('base_path').'images/products/'.$pid.'/';
         $old = umask(0); 
         mkdir($img_dir.'imgs', 0777, TRUE);
         mkdir($img_dir.'thumbs', 0777, TRUE);
         umask($old);
         $img_urls = preg_split("/\r\n|\n|\r/", $p['imgs']);
+		try{
         foreach($img_urls as $i=>$u)
         {
             if(empty($u)) continue;
@@ -162,6 +167,7 @@ class Product_model extends CI_Model
 			image_download($u, $img_dir.'imgs/'.$i.'.jpg', $img_dir.'thumbs/'.$i.'.jpg');
         }
 		image_grid_item_prepare($img_urls[0], $img_dir.'thumb.jpg');
+		}catch(Exception $e){echo $e->getMessage();}
     }
     
     

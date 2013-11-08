@@ -79,7 +79,7 @@ class Order_model extends CI_Model
         $order_id = $this->db->insert_id();
         
         $this->db->where('order_id', $order_id);
-        $this->db->update('customer_order', array('display_id' => 'D'.date('ymd'). sprintf('-%05d', $order_id). sprintf('-%03d', $user_info['customer_id']))); 
+        $this->db->update('customer_order', array('display_id' => 'D'.date('md'). sprintf('-%d-%d', $order_id, $user_info['customer_id']))); 
         
         foreach($cart_info['items'] as $i)
         {

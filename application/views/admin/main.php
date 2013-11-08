@@ -5,6 +5,7 @@
             body { font-size: 12px;}
         </style>
         <?php echo link_tag(base_url().'css/smoothness/jquery-ui-1.10.3.custom.css');?>
+        <?php echo link_tag(base_url().'libs/jquery.waiting/waiting.css');?>
         <script src="<?php echo base_url(); ?>js/jquery-1.9.1.js"></script>
         <script src="<?php echo base_url(); ?>js/jquery-ui-1.10.3.custom.js"></script>
         <script src="<?php echo base_url();?>libs/jquery.form.js"></script>

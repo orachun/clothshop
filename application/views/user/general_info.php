@@ -25,7 +25,7 @@
             <label class="label">อีเมล์</label><?php echo $email;?>
         </div>
         <div class="form-item form-item-name">
-            <label class="label">ชื้อ-สกุล</label>
+            <label class="label">ชื่อ-สกุล</label>
             <div>
                 <input class="ui-corner-all" name="fullname" type="text" value="<?php echo $fullname;?>"/>
             </div>

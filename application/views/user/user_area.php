@@ -1,7 +1,14 @@
+<style>
+	.user-area .tabs .ui-tabs-panel
+	{
+		min-height: 400px;
+	}
+</style>
+
 <div class="user-area">
     <div class="tabs">
         <ul>
-            <li><a href="<?php echo base_url(); ?>index.php/user/user_area/general_info">ข้อมูลทั่วไป</a></li>
+            <li><a href="<?php echo base_url(); ?>index.php/user/user_area/general_info">ข้อมูลส่วนตัว</a></li>
             <li><a href="<?php echo base_url(); ?>index.php/user/user_area/coupon">คูปองส่วนลด</a></li>
             <li><a href="<?php echo base_url(); ?>index.php/user/user_area/orders">รายการสั่งซื้อสินค้า</a></li>
         </ul>

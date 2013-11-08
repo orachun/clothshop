@@ -49,7 +49,7 @@ class Product extends CI_Controller
 		
 		$products = $this->Product_model->list_product($cat, $sort, $sort_order, $keyword, $page);
         $data['products'] = array();
-        for($i=0;$i<10;$i++)
+        //for($i=0;$i<10;$i++)
 		foreach($products as $p)
 		{
 			$data['products'][] = $this->_product_grid_item($p);

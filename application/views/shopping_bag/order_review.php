@@ -44,11 +44,12 @@
         font-size: 1.2em;
         font-weight: bold;
         margin: 20px 0px 10px;
+		color: #ce7fa0;
     }
     
     .order-review .ui-tabs-panel
     {
-        height: 400px;
+        min-height: 400px;
         overflow: auto;
     }
 </style>
@@ -70,7 +71,7 @@
         <div id="receiver-info-tab">
             <?php echo $receiver_info_tab;?>
         </div>
-        <div style="background: white;"><span class="prev-tab-btn button ui-corner-all">กลับ</span><span class="next-tab-btn button ui-corner-all">ต่อไป</span><span class="order-submit-btn button ui-corner-all">ยืนยันสั่งซื้อสินค้า</span></div>
+        <div style="text-align:center"><span class="prev-tab-btn button ui-corner-all">กลับ</span><span class="next-tab-btn button ui-corner-all">ต่อไป</span><span class="order-submit-btn button ui-corner-all">ยืนยันสั่งซื้อสินค้า</span></div>
     </div>
 </div>
 

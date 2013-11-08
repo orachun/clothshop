@@ -19,7 +19,7 @@
                         </div>
                     </label>
                 </div>
-            <?php if ($coupons == NULL): ?>
+            <?php if (!$is_logged_in): ?>
                 <span class="register-btn button ui-corner-all">สมัครสมาชิกหรือลงชื้อเข้าใช้ตอนนี้ เพื่อรับส่วนลดสำหรับใช้ในการซื้อสินค้า</span>
                 <input style="display:none;" name="selected_coupon" type="radio" value="-1" amountremain="<?php echo $this->cart->total(); ?>"/>
             <?php else: ?>

@@ -38,9 +38,16 @@
     .ordered-item-section table td,
     .ordered-item-section table th
     {
-        border: solid 1px lightgray;margin: 0px;
+		margin: 0px;
         text-align: center;
     }
+	
+	.ordered-item-section table, 
+    .ordered-item-section table th
+	{
+        border-bottom: solid 1px lightgray;
+	}
+	
     .ordered-item-section table {width: 100%;}
     .ordered-item-section table .name
     {
@@ -56,7 +63,7 @@
 
 <div class="order-info">
     <div class="logo-section">
-        <img src="<?php echo base_url();?>images/logo.png" height="100"/>
+        <img src="<?php echo base_url();?>images/banner.png" height="40"/>
     </div>
     <div class="order-info-section">
         <div class="section-header">ข้อมูลการสั่งซื้อ</div>

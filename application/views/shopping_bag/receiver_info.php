@@ -3,6 +3,11 @@
     {
         margin: 10px 0px;
     }
+	.order-review .receiver-info input
+	{
+		width: 300px;
+		height: 30px;
+	}
     .order-review .receiver-info textarea[name="receiver-addr"]
     {
         width: 300px;

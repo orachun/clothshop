@@ -5,15 +5,15 @@ function ___config($key = NULL)
 {
     $___config = array(
         'base_path' => '/home/orachun/public_html/ci/',
-        'items_per_page' => 50,
-        'items_per_row' => 5,
+        'items_per_page' => 10,
+        'items_per_row' => 4,
         'admin_email' => 'orachun.chun@gmail.com',
         'upload_file_delim' => '(][)',
-		'grid_item_thumb_width' => 178,
-		'grid_item_thumb_height' => 234,
+		'grid_item_thumb_width' => 200,
+		'grid_item_thumb_height' => 267,
 		'thumb_width' => 80,
 		'thumb_height' => 80,
-		'watermark' => base_url().'images/logo.png'
+		'watermark' => base_url().'images/banner.png'
     );
     if(empty($key))
     {
