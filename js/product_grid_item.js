@@ -38,6 +38,6 @@ $(function(){
     });
     
     
-        $('.product-showcase-tabs').tabs();
+//        $('.product-showcase-tabs').tabs();
         slide(".product-showcase", ".product-grid-item", items_per_row, 5000, 800);
 });

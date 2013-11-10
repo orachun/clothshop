@@ -71,7 +71,6 @@ foreach (___config() as $k => $v)
         <div id="topbar">
             <div id="logo-container">
                 <a href="<?php echo base_url() ?>index.php" title="หน้าแรก">
-<!--                    <img id="logo" src="<?php echo base_url(); ?>images/logo.png" height="100"/>-->
 					*PRITTILA*
                 </a>
             </div>

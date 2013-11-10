@@ -44,7 +44,7 @@ class Product extends CI_Controller
         $data['pager'] = '<div class="pager">'.$this->pagination->create_links().'</div>';
 		$data['title'] = 'Product list';
 		$data['best_seller'] = $this->best_seller();
-		$data['random'] = $this->random();
+		$data['random_products'] = $this->random();
 		$data['most_viewed'] = $this->most_viewed();
 		
 		$products = $this->Product_model->list_product($cat, $sort, $sort_order, $keyword, $page);
@@ -61,13 +61,13 @@ class Product extends CI_Controller
         );
         
 		$data['contents'] = $this->_main_slide_show() . $this->load->view('/product/product_grid', $data, TRUE);
-        $data['footer'] = '<div class="product-showcase-tabs product-grid">
-                                <ul>
-                                    <li><a href="#random-tab">สินค้าอื่นๆที่น่าสนใจ</a></li>
-                                </ul>
-                                <div id="random-tab">'.$data['random'].'</div>
-                            </div>
-                            ';
+//        $data['footer'] = '<div class="product-showcase-tabs product-grid">
+//                                <ul>
+//                                    <li><a href="#random-tab"><span class="tab-eng-title">*SEE ALSO</span> สินค้าอื่นๆที่น่าสนใจ</a></li>
+//                                </ul>
+//                                <div id="random-tab">'.$data['random'].'</div>
+//                            </div>
+//                            ';
 		$this->load->view('template', $data);
 	}
 	
