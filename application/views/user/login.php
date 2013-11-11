@@ -3,17 +3,21 @@
     {
         margin: 5px 0px;
     }
-    .login-form .label
+/*    .login-form .label
     {
         width: 60px;
         display: inline-block;
         vertical-align: top;
-    }
-    .login-form .form-item input,
+    }*/
+    .login-form .form-item input
+	{
+		width: 180px;
+		height: 30px;
+	}
     .login-form .form-item textarea
     {
         width: 180px;
-		height: 30px;
+		height: 50px;
     }
 </style>
 <div class="login-form">
@@ -33,12 +37,12 @@
 
 	<form class="register">
 		<h1>สมัครสมาชิก</h1>
-		<div class="form-item form-item-email"><label class="label">อีเมล์</label><div><input name="email" type="text"/></div></div>
-		<div class="form-item form-item-pass"><label class="label">รหัสผ่าน</label><div><input id="pass" name="pass" type="password"/></div></div>
-		<div class="form-item form-item-confirm-pass"><label class="label">ยืนยัน</label><div><input name="confirm_pass" type="password" /></div></div>
-		<div class="form-item form-item-name"><label class="label">ชื่อ</label><div><input name="name" type="text"/></div></div>
-		<div class="form-item form-item-addr"><label class="label">ที่อยู่</label><div><textarea name="addr"></textarea></div></div>
-		<div class="form-item form-item-tel"><label class="label">โทร.</label><div><input name="tel" type="text"/></div></div>
+		<div class="form-item form-item-email"><div><input name="email" type="text" placeholder="อีเมล์"/></div></div>
+		<div class="form-item form-item-pass"><div><input id="pass" name="pass" type="password" placeholder="รหัสผ่าน"/></div></div>
+		<div class="form-item form-item-confirm-pass"><div><input name="confirm_pass" type="password" placeholder="ยืนยันรหัสผ่าน"/></div></div>
+		<div class="form-item form-item-name"><div><input name="name" type="text" placeholder="ชื่อ-นามสกุล"/></div></div>
+		<div class="form-item form-item-addr"><div><textarea name="addr" placeholder="ที่อยู่ในการจัดส่งสินค้า"></textarea></div></div>
+		<div class="form-item form-item-tel"><div><input name="tel" type="text" placeholder="หมายเลขโทรศัพท์"/></div></div>
 		<div class="form-item form-item-register-btn"><span class="register-btn ui-corner-all button">สมัครสมาชิก</span></div>
 	</form>
 </div>
