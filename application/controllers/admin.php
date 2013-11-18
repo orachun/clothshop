@@ -107,6 +107,14 @@ class Admin extends CI_Controller
     public function payment_checking()
     {
         $data['orders'] = $this->db->get('customer_order')->result_array();
+		foreach($data['orders'] as $i=>$o)
+		{
+			if($o['status'] == 'P')
+			{
+				$payment_inform = $this->db->get_where('payment_inform', array('order_id'=> $data['orders'][$i]['order_id']))->result_array();
+				$data['orders'][$i]['payment'] = $payment_inform[0];
+			}
+		}
         $this->load->view('admin/payment_checking', $data);
     }
     public function order_set_checked()

@@ -56,9 +56,7 @@
 				color += $(element).val()+";";
 			});
 			$.post(base_url+'index.php/admin/add_product_submit', $('.add-product form').serialize()+"&color="+color+"&size="+size, function(data){
-				$('.add-product').parent().load(base_url+'index.php/admin/add_product_form', function(){
-					
-				});
+				$('.add-product').parent().load(base_url+'index.php/admin/add_product_form');
 			});
 		});
 

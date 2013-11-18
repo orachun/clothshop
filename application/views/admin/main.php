@@ -21,6 +21,7 @@
         </script>
     </head>
     <body>
+		<a href="<?php echo base_url();?>">Home</a>
         <div id="tabs">
             <ul>
               <li><a href="<?php echo base_url(); ?>index.php/admin/supplier">Suppliers</a></li>

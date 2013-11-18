@@ -2,6 +2,9 @@
     <?php foreach ($orders as $o):?>
     <div><a href="<?php echo base_url().'index.php/order/display/'.$o['order_id'];?>" target="_blank"><?php echo $o['display_id'];?></a> Status: <?php echo $o['status'];?>
     <?php if($o['status'] == 'P'):?>
+		Amount: <?php echo $o['payment']['amount'];?>
+		Informed Date: <?php echo $o['payment']['inform_date'];?>
+		Paid Date: <?php echo $o['payment']['paid_date'];?>
         <button class="checked-btn" orderid ="<?php echo $o['order_id'];?>">Checked</button>
     <?php endif;?>
     <?php if($o['status'] == 'C'):?>
