@@ -131,7 +131,7 @@ class Product_model extends CI_Model
             'price_before_sale' => -1,
             'added_date' => date('Y-m-d'),
             'supplier_id' => $p['supplier_id'],
-            'supplier_product_code' => $p['supplier_product_code'],
+            'supplier_product_url' => $p['supplier_product_url'],
             'views' => 0,
         ));
         $pid = $this->db->insert_id();

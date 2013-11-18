@@ -59,8 +59,8 @@ class Admin extends CI_Controller
             'cat_id' => $this->input->post('cat_id'),
             'cost' => $this->input->post('cost'),
             'unit_price' => $this->input->post('unit_price'),
-            'supplier_id' => $this->input->post('supplier_id'),
-            'supplier_product_code' => $this->input->post('supplier_product_code'),
+//            'supplier_id' => $this->input->post('supplier_id'),
+            'supplier_product_url' => $this->input->post('supplier_product_url'),
             'imgs' => $this->input->post('imgs'),
         );
         $p['color'] = explode(';', $this->input->post('color'));
@@ -117,7 +117,10 @@ class Admin extends CI_Controller
     public function order_set_delivered()
     {
         $this->db->where('order_id', $this->input->post('order_id'));
-        $this->db->update('customer_order', array('status'=>'D'));
+        $this->db->update('customer_order', array('status'=>'D', 
+			'tracking_no'=>$this->input->post('tracking_no'),
+			'delivered_date' => $this->input->post('delivered_date')
+				));
     }
     public function slideshow()
     {
