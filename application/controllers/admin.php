@@ -199,6 +199,7 @@ class Admin extends CI_Controller
 			);
 	}
 	
+	
 	public function set_coupon_status()
 	{
 		$this->load->model('Coupon_model');
@@ -206,5 +207,21 @@ class Admin extends CI_Controller
 				$this->input->post('coupon_id'), 
 				$this->input->post('status')
 				);
+	}
+	
+	public function give_coupon()
+	{
+		$this->load->model('Coupon_model');
+		$this->Coupon_model->give(
+				$this->input->post('coupon_id'), 
+				$this->input->post('customer_id'),
+				$this->input->post('amount')
+				);
+	}
+	
+	public function customer()
+	{
+		$data['customers'] = $this->User_model->get();
+		$this->load->view('admin/customer', $data);
 	}
 }

@@ -12,6 +12,13 @@
 		<?php else:?>
 			<button class="set-status-btn" status="A">Activate</button>
 		<?php endif;?>
+		<br/>
+		<form class="give-coupon-form">
+			<input type="hidden" name="coupon_id" value="<?php echo $c['coupon_id'];?>"/>
+			Give to <input type="text" name="customer_id" placeholder="customer ID"/><br/>
+			<input type="text" name="amount" placeholder="Number of coupons" /><br/>
+			<input type="submit"/>
+		</form>
 	</div>
 	<?php endforeach;?>
 	
@@ -41,6 +48,12 @@
 		$('.coupon-list .add-coupon-form').submit(function(){
 			$('.coupon-list').waiting();
 			$.post(base_url+'index.php/admin/add_coupon', $(this).serialize(), reload);
+			return false;
+		});
+		
+		$('.coupon-list .give-coupon-form').submit(function(){
+			$('.coupon-list').waiting();
+			$.post(base_url+'index.php/admin/give_coupon', $(this).serialize(), reload);
 			return false;
 		});
 

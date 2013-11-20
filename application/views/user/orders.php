@@ -17,7 +17,7 @@
             <td><?php echo number_format($o['net_total'], 2);?></td>
             <td><?php echo order_status($o['status']);?></td>
             <td><?php echo empty($o['paid_date']) ? '-' : thai_datetime($o['paid_date'], '<br/>');?></td>
-            <td><?php echo empty($o['delivered_date']) ? '-' : thai_datetime($o['delivered_date']);?></td>
+            <td><?php echo empty($o['delivered_date']) ? '-' : thai_date($o['delivered_date']);?></td>
             <td><?php echo empty($o['tracking_no']) ? '-' : $o['tracking_no'];?></td>
             <td>
                 <?php if($o['status'] == 'W' || $o['status'] == 'P'):?>

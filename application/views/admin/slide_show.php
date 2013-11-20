@@ -1,8 +1,9 @@
 <div class="slide-show-list">
     <?php foreach($slides as $s):?>
-    <div>
+    <div class="item-container">
+        <a href="<?php echo base_url().$s['img'];?>" target="_blank"><img src="<?php echo base_url().$s['img'];?>" height="100"/></a><br/>
+		<a href="<?php echo base_url().$s['link'];?>" target="_blank"><button>LINK</button></a>
         <button class="del-slide" id="<?php echo $s['slide_id'];?>">Del</button>
-        <?php echo $s['img'];?>: <?php echo base_url().$s['link'];?>
     </div>
     <?php endforeach;?>
     
@@ -24,9 +25,12 @@ $(function(){
             });
     });
     $('.slide-show-list .del-slide').click(function(){
-        $.post(base_url+'index.php/admin/del_slideshow', {'slide-id': $(this).attr('id')}, function(){
-            $('.slide-show-list').parent().load(base_url+'index.php/admin/slideshow');
-        });
+        if(confirm("Delete the slide?"))
+		{
+			$.post(base_url+'index.php/admin/del_slideshow', {'slide-id': $(this).attr('id')}, function(){
+				$('.slide-show-list').parent().load(base_url+'index.php/admin/slideshow');
+			});
+		}
     });
 });    
 </script>

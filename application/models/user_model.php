@@ -169,4 +169,18 @@ class User_model extends CI_Model
             return FALSE;
         }
     }
+	
+	public function get($customer_id = null)
+	{
+		if($customer_id == null)
+		{
+			return $this->db->get('customer')->result_array();
+		}
+		$res = $this->db->get_where('customer', array('customer_id' => $customer_id))->result_array();
+		if(count($res)>0)
+		{
+			return $res[0];
+		}
+		return null;
+	}
 }

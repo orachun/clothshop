@@ -1,17 +1,17 @@
 <style>
-    .page-list .edit-container, .page-list .add-page
+/*    .page-list .edit-container, .page-list .add-page
     {
         margin: 20px;
         border: solid 1px gray;
         border-radius: 4px;
         padding: 20px;
-    }
+    }*/
 </style>
 <div class="page-list">
     <?php foreach($pages as $p):?>
-    <div class="page-container" pid="<?php echo $p['id'];?>">
+    <div class="page-container item-container" pid="<?php echo $p['id'];?>">
+        <a href="<?php echo base_url().'index.php/page/content/'.$p['link_name'];?>" target="_blank"><?php echo $p['name'];?></a><br/>
         <button class="del-page" pid="<?php echo $p['id'];?>">Del</button>
-        <a href="<?php echo base_url().'index.php/page/content/'.$p['link_name'];?>" target="_blank"><?php echo $p['name'];?></a>
         <button class="edit-btn">Edit</button>
         <form class="edit-container">
             <input type="hidden" name="id" value="<?php echo $p['id'];?>"/>
@@ -69,10 +69,13 @@
             return false;
         });
         $('.page-list .del-page').click(function(){
-            var btn = $(this);
-            $.post(base_url+'index.php/admin/del_page', {id:$(this).attr('pid')}, function(){
-                btn.parent().remove();
-            });
+            if(confirm("Delete the page?"))
+			{
+				var btn = $(this);
+				$.post(base_url+'index.php/admin/del_page', {id:$(this).attr('pid')}, function(){
+					btn.parent().remove();
+				});
+			}
         });
 		
 		initEditor('.page-list .add-page #new-page-content');
