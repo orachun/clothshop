@@ -178,4 +178,33 @@ class Admin extends CI_Controller
     {
         $this->db->delete('page', array('id' => $this->input->post('id')));
     }
+	
+	public function coupon_list()
+	{
+        $this->load->model('Coupon_model');
+		$data['coupons'] = $this->Coupon_model->get();
+		$this->load->view('admin/coupon.php', $data);
+	}
+	
+	public function add_coupon()
+	{
+        $this->load->model('Coupon_model');
+		$this->Coupon_model->add(
+				$this->input->post('name'), 
+				$this->input->post('desc'), 
+				$this->input->post('discount_type'), 
+				$this->input->post('amount'), 
+				$this->input->post('amount_threshold'), 
+				$this->input->post('valid_day')
+			);
+	}
+	
+	public function set_coupon_status()
+	{
+		$this->load->model('Coupon_model');
+		$this->Coupon_model->setStatus(
+				$this->input->post('coupon_id'), 
+				$this->input->post('status')
+				);
+	}
 }

@@ -3,6 +3,16 @@
     <head>
         <style>
             body { font-size: 12px;}
+			.item-container
+			{
+				margin: 5px 0px;
+				border: solid 1px lightgray;
+				padding: 5px;
+			}
+			.item-container:hover
+			{
+				border-color: gray;
+			}
         </style>
         <?php echo link_tag(base_url().'css/smoothness/jquery-ui-1.10.3.custom.css');?>
         <?php echo link_tag(base_url().'libs/jquery.waiting/waiting.css');?>
@@ -32,6 +42,7 @@
               <li><a href="<?php echo base_url(); ?>index.php/admin/payment_checking">Payment Checking</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/slideshow">Main Slideshow</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/page">Page</a></li>
+              <li><a href="<?php echo base_url(); ?>index.php/admin/coupon_list">Discount Coupons</a></li>
             </ul>
         </div>
     </body>
