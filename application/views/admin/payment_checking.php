@@ -24,6 +24,9 @@
 
 <script>
     $(function(){
+		
+		$('.payment-checking .delivered-date').datepicker({ dateFormat: "yy-mm-dd" });
+		
         $('.payment-checking .checked-btn').click(function(){
             $.post(base_url+'index.php/admin/order_set_checked', {order_id: $(this).attr('orderid')}, function(){
                 $('.payment-checking').parent().load(base_url+'index.php/admin/payment_checking');
