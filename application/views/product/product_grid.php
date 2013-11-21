@@ -1,39 +1,11 @@
 <style>
     .main-product-grid {margin: 50px 0px 20px;
 		border-top: dashed 2px rgba(197, 165, 176, 0.8);}
-	.product-showcase-tabs{text-align: left; margin-top: 50px;}
-	.product-showcase-tabs .showcase-title
-	{
-		display: inline-block;
-		padding: 5px;
-		margin-left: 20px;
-	}
-	.product-showcase-tabs .tab-eng-title
-	{
-		font-family: 'Fredericka the Great', cursive;
-		font-size: 2em;
-		color: white;
-		line-height: 1.4em;
-	}
-	.product-showcase-tabs .showcase-content
-	{
-		text-align: center;
-		border-top: dashed 2px rgba(197, 165, 176, 0.8);
-		margin-top: 2px;
-		margin-bottom: 20px;
-		
-	}
+	
 </style>
 
-<div class="product-showcase-tabs product-grid">
-    <div class="showcase-title ui-state-active ui-corner-all"><span class="tab-eng-title">*BEST SELLERS</span> สินค้าขายดี</div>
-    <div class="showcase-content" id="best-seller-tab"><?php echo $best_seller; ?></div>
-</div>
-
-<div class="product-showcase-tabs product-grid">
-    <div class="showcase-title ui-state-active ui-corner-all"><span class="tab-eng-title">*MOST VIEWED</span> สินค้าที่คนดูมากที่สุด</div>
-    <div class="showcase-content" id="most-viewed-tab"><?php echo $most_viewed; ?></div>
-</div>
+<?php echo $best_seller; ?>
+<?php echo $most_viewed; ?>
 
 <div class="product-grid main-product-grid">
     <div>
@@ -70,10 +42,7 @@
 </div>
 
 
-<div class="product-showcase-tabs product-grid">
-	<div class="showcase-title ui-state-active ui-corner-all"><span class="tab-eng-title">*OTHERS</span> สินค้าอื่นๆที่น่าสนใจ</div>
-	<div class="showcase-content" id="random-tab"><?php echo $random_products;?></div>
-</div>
+<?php echo $random_products;?>
 
 <script type="text/javascript">
     $(function(){

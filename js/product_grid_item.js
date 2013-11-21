@@ -24,11 +24,10 @@ $(function(){
         container.waiting();
         $('html, body').animate({
             scrollTop: container.offset().top - 20
-        }, 1000);
+        }, 700);
         container.animate({
-//            "height": $(window).height() - 50 + "px",
-            "height": "600px",
-        }, 1000, function() {
+            "min-height": "600px"
+        }, 700, function() {
             $.get(base_url+'index.php/product/detail/' + pid + '/true', function(data) {
                 container.append(data);
 				container.css('height', 'auto');
@@ -38,6 +37,4 @@ $(function(){
     });
     
     
-//        $('.product-showcase-tabs').tabs();
-        slide(".product-showcase", ".product-grid-item", items_per_row, 5000, 800);
 });

@@ -43,9 +43,9 @@ class Product extends CI_Controller
         );
         $data['pager'] = '<div class="pager">'.$this->pagination->create_links().'</div>';
 		$data['title'] = 'Product list';
-		$data['best_seller'] = $this->best_seller();
-		$data['random_products'] = $this->random();
-		$data['most_viewed'] = $this->most_viewed();
+		$data['best_seller'] = $this->Product_model->best_seller_products();
+		$data['random_products'] = $this->Product_model->random_products();
+		$data['most_viewed'] = $this->Product_model->most_viewed_products();
 		
 		$products = $this->Product_model->list_product($cat, $sort, $sort_order, $keyword, $page);
         $data['products'] = array();
@@ -71,45 +71,45 @@ class Product extends CI_Controller
 		$this->load->view('template', $data);
 	}
 	
-	public function best_seller($limit = 20)
-	{
-		$data = array();
-        $this->db->order_by("bought", "desc"); 
-        $data['product_info'] = $this->db->get('_sold_product', $limit, 0)->result_array();
-		foreach($data['product_info'] as $i=>$p)
-		{
-            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
-			$data['products'][] = $this->_product_grid_item($p);
-		}
-        $data['name'] = 'best-seller';
-		return $this->load->view('product/product_showcase', $data, TRUE);
-	}
-    public function random($limit = 20)
-    {
-		$data = array(); 
-        $this->db->order_by("RAND()", "desc"); 
-        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
-		foreach($data['product_info'] as $i=>$p)
-		{
-            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
-			$data['products'][] = $this->_product_grid_item($p);
-		}
-        $data['name'] = 'random'.  random_string();
-		return $this->load->view('product/product_showcase', $data, TRUE);
-    }
-    public function most_viewed($limit = 20)
-    {
-        $data = array(); 
-        $this->db->order_by("views", "desc"); 
-        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
-		foreach($data['product_info'] as $i=>$p)
-		{
-            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
-			$data['products'][] = $this->_product_grid_item($p);
-		}
-        $data['name'] = 'most-viewed';
-		return $this->load->view('product/product_showcase', $data, TRUE);
-    }
+//	public function best_seller($limit = 20)
+//	{
+//		$data = array();
+//        $this->db->order_by("bought", "desc"); 
+//        $data['product_info'] = $this->db->get('_sold_product', $limit, 0)->result_array();
+//		foreach($data['product_info'] as $i=>$p)
+//		{
+//            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+//			$data['products'][] = $this->_product_grid_item($p);
+//		}
+//        $data['name'] = 'best-seller';
+//		return $this->load->view('product/product_showcase', $data, TRUE);
+//	}
+//    public function random($limit = 20)
+//    {
+//		$data = array(); 
+//        $this->db->order_by("RAND()", "desc"); 
+//        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+//		foreach($data['product_info'] as $i=>$p)
+//		{
+//            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+//			$data['products'][] = $this->_product_grid_item($p);
+//		}
+//        $data['name'] = 'random'.  random_string();
+//		return $this->load->view('product/product_showcase', $data, TRUE);
+//    }
+//    public function most_viewed($limit = 20)
+//    {
+//        $data = array(); 
+//        $this->db->order_by("views", "desc"); 
+//        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+//		foreach($data['product_info'] as $i=>$p)
+//		{
+//            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+//			$data['products'][] = $this->_product_grid_item($p);
+//		}
+//        $data['name'] = 'most-viewed';
+//		return $this->load->view('product/product_showcase', $data, TRUE);
+//    }
 	
 	private function _product_grid_item($product)
 	{

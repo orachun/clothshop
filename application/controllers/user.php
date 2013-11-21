@@ -74,15 +74,9 @@ class User extends CI_Controller
             $this->load->model('Product_model');
             $data = array();
             $data['tab'] = $tab;
+            $data['random_products'] = $this->Product_model->random_products();
             $data['contents'] = $this->load->view('user/user_area', $data, TRUE);
             $data['title'] = 'สมาชิก';
-            $data['footer'] = '<div class="product-showcase-tabs product-grid">
-                                <ul>
-                                    <li><a href="#random-tab">สินค้าอื่นๆที่น่าสนใจ</a></li>
-                                </ul>
-                                <div id="random-tab">'.$this->Product_model->random().'</div>
-                            </div>
-                            ';
             
         $data['_css'] = array(
             'product',

@@ -213,4 +213,50 @@ class Product_model extends CI_Model
         }
         return $result;
     }
+	
+	public function best_seller_products($limit = 20)
+	{
+		$data = array();
+        $this->db->order_by("bought", "desc"); 
+        $data['product_info'] = $this->db->get('_sold_product', $limit, 0)->result_array();
+		foreach($data['product_info'] as $i=>$p)
+		{
+            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+			$data['products'][] = $this->load->view('product/product_grid_item', $p, TRUE);
+		}
+        $data['name'] = 'best-seller';
+		$data['title_en'] = '*BEST SELLERS';
+		$data['title_th'] = 'สินค้าขายดี';
+		return $this->load->view('product/product_showcase', $data, TRUE);
+	}
+	public function random_products($limit = 20)
+    {
+		$data = array(); 
+        $this->db->order_by("RAND()", "desc"); 
+        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+		foreach($data['product_info'] as $i=>$p)
+		{
+            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+			$data['products'][] = $this->load->view('product/product_grid_item', $p, TRUE);
+		}
+        $data['name'] = 'random'.  random_string();
+		$data['title_en'] = '*OTHERS';
+		$data['title_th'] = 'สินค้าอื่นๆที่น่าสนใจ';
+		return $this->load->view('product/product_showcase', $data, TRUE);
+	}
+	public function most_viewed_products($limit = 20)
+    {
+        $data = array(); 
+        $this->db->order_by("views", "desc"); 
+        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+		foreach($data['product_info'] as $i=>$p)
+		{
+            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+			$data['products'][] = $this->load->view('product/product_grid_item', $p, TRUE);
+		}
+        $data['name'] = 'most-viewed';
+		$data['title_en'] = '*MOST VIEWED';
+		$data['title_th'] = 'สินค้าที่คนดูมากที่สุด';
+		return $this->load->view('product/product_showcase', $data, TRUE);
+	}
 }
