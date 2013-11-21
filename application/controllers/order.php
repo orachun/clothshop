@@ -140,9 +140,12 @@ class Order extends CI_Controller
             echo 'คำสั่งซื้อสินค้านี้ ไม่ได้อยู่ในสถานะรอชำระเงินค่ะ';
             return;
         }
+		
+		$this->db->delete('payment_inform', array('order_id' => $order->order_id));
+		
         $this->db->insert('payment_inform', array(
             'order_id' => $order->order_id,
-            'amount' => $this->input->post('amount'),
+            'amount' => $this->input->post('paid_amount'),
             'inform_date' => date('Y-m-d H:i:s'),
             'paid_date' => date('Y-m-d H:i:s', $time),
         ));

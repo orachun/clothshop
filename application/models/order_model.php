@@ -41,7 +41,9 @@ class Order_model extends CI_Model
     
     function add_order($user_info, $cart_info, $store_order_id, $deliver_id, $customer_coupon_id)
     {
-        $deliver_info = $this->db->get_where('delivery_type', array('delivery_type_id' => $deliver_id))->row_array();
+        $deliver_info = $this->db->get_where('delivery_type', 
+				array('delivery_type_id' => $deliver_id))
+				->row_array();
         if($customer_coupon_id == -1)
         {
             $coupon_info['coupon_id'] = -1;
@@ -97,4 +99,10 @@ class Order_model extends CI_Model
         
         return $order_id;
     }
+	
+	
+	public function get_unordered_store_products()
+	{
+		return $this->db->get('_unordered_store_product')->result_array();
+	}
 }

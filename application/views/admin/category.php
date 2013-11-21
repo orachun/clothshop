@@ -1,12 +1,19 @@
 <div class="category">
-    <?php foreach($cats as $c):?>
-		<div class="item-container">
-			<?php echo $c->name;?>
-			<button class="del_btn" catname="<?php echo $c->name;?>">Del</button>
-		</div>
+    <table class="admin-table">
+		<thead>
+			<th>Category</th>
+			<th>Delete</th>
+		</thead>
+	
+	<?php foreach($cats as $i=>$c):?>
+		<tr class="<?php echo $i%2==0?'odd':'even';?>">
+			<td><?php echo $c->name;?></td>
+			<td><button class="del_btn" catname="<?php echo $c->name;?>">Delete</button></td>
+		</tr>
     <?php endforeach; ?>
-    <div class="add">
-        <input name="cat_name"/><button class="add_btn">Add</button>
+	</table>
+    <div class="add item-container">
+        <input name="cat_name" placeholder="category name"/><button class="add_btn">Add</button>
     </div>
 </div>
 

@@ -15,6 +15,41 @@
 			{
 				border-color: gray;
 			}
+			.disabled
+			{
+				background-color: lightgray;
+				color: #999;
+			}
+			
+			
+			.admin-table
+			{
+				border-spacing:0;
+				border-collapse:collapse;
+				border: dashed 1px lightgray;
+			}
+			.admin-table thead
+			{
+				background-color: #C1E6E5;
+			}
+			.admin-table th,
+			.admin-table td
+			{
+				text-align: center;
+				padding: 5px 10px;
+			}
+			.admin-table tr.even
+			{
+				background-color: #ddd;
+			}
+			.admin-table tr.odd
+			{
+				background-color: #eee;
+			}
+			.admin-table tr:hover
+			{
+				background-color: #c8def4;
+			}
 			
         </style>
         <?php echo link_tag(base_url().'css/smoothness/jquery-ui-1.10.3.custom.css');?>
@@ -41,6 +76,7 @@
               <li><a href="<?php echo base_url(); ?>index.php/admin/category">Category</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/add_product_form">Add Product</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/store_order">Store Order</a></li>
+              <li><a href="<?php echo base_url(); ?>index.php/admin/store_order_products">Store Order Products</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/delivering">Delivering</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/payment_checking">Customer Orders</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/slideshow">Main Slideshow</a></li>

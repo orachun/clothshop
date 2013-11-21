@@ -1,14 +1,30 @@
 <div class="delivering">
-    <?php foreach($deliverings as $c)
-    {
-        echo '<div class="item-container">'
-                .$c->name 
-                .'<br/> Unit Cost: '.$c->unit_cost
-                .'<br/> Free Threshold: '. $c->free_threshold
-                .'<br/> Discarded: '. $c->is_discarded
-                .'<br/> <button class="del_btn" did="'.$c->delivery_type_id.'">Discard</button> </div>';
-    }
-    ?>
+	<table class="admin-table">
+		<thead>
+			<th>Name</th>
+			<th>Unit Cost<br/>(Baht)</th>
+			<th>Free Threshold<br/>(items)</th>
+			<th>Discarded</th>
+			<th>Discard</th>
+		</thead>
+		<tbody>
+			<?php foreach($deliverings as $i=>$c):?>
+			<tr class="<?php echo $i%2==0?'odd':'even';?> <?php echo ($c->is_discarded=='Y'?'disabled':'')?>">
+			<td><?php echo $c->name;?></td> 
+			<td><?php echo $c->unit_cost;?></td>
+			<td><?php echo $c->free_threshold;?></td>
+			<td><?php echo $c->is_discarded;?></td>
+			<td>
+				<?php if($c->is_discarded=='N'):?>
+					<button class="del_btn" did="<?php echo $c->delivery_type_id;?>">Discard</button> 
+				<?php endif;?>
+					&nbsp;
+			</<td>
+
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	
     <form class="add">
         Name: <input name="name"/> 
         Unit cost: <input name="unit_cost"/> 

@@ -81,10 +81,6 @@ class Admin extends CI_Controller
     {
         $this->Others_model->del_store_order($this->input->post('sid'));
     }
-    public function set_store_order_status()
-    {
-        $this->Others_model->set_store_order_status($this->input->post('sid'), $this->input->post('status'));
-    }
     public function delivering()
     {
         $data['deliverings'] = $this->db->get('delivery_type')->result();
@@ -109,7 +105,7 @@ class Admin extends CI_Controller
         $data['orders'] = $this->db->get('customer_order')->result_array();
 		foreach($data['orders'] as $i=>$o)
 		{
-			if($o['status'] == 'P')
+			if($o['status'] == 'P' || $o['status'] == 'C'|| $o['status'] == 'D')
 			{
 				$payment_inform = $this->db->get_where('payment_inform', array('order_id'=> $data['orders'][$i]['order_id']))->result_array();
 				$data['orders'][$i]['payment'] = $payment_inform[0];
@@ -223,5 +219,13 @@ class Admin extends CI_Controller
 	{
 		$data['customers'] = $this->User_model->get();
 		$this->load->view('admin/customer', $data);
+	}
+	
+	public function store_order_products()
+	{
+		$this->load->model('Order_model');
+		$data['products'] = $this->Order_model->get_unordered_store_products();
+		
+		$this->load->view('admin/store_order_products', $data);
 	}
 }

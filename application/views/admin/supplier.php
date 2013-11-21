@@ -1,11 +1,21 @@
 <div class="supplier">
-    <?php foreach($suppliers as $c)
-    {
-        echo '<div><button class="del_btn" sid="'.$c->supplier_id.'">Del</button> '
-                .$c->name.': <a href="'.$c->url.'" target="_blank">'.$c->url.'</a>'
-                .'</div>';
-    }
-    ?>
+	<table class="admin-table">
+		<thead>
+			<th>Name</th>
+			<th>URL</th>
+			<th>Delete</th>
+		</thead>
+		<tbody>
+			<?php foreach ($suppliers as $i=>$c):?>
+			<tr class="<?php echo $i%2==0?'odd':'even';?>">
+				<td><?php echo $c->name;?></td>
+				<td><a href="<?php echo $c->url;?>" target="_blank"><?php echo $c->url;?></a></td>
+				<td><button class="del_btn" sid="<?php echo $c->supplier_id;?>">Delete</button></td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+    
     <div class="add">
         Name: <input name="name"/> URL: <input name="url"/><button class="add_btn">Add</button>
     </div>

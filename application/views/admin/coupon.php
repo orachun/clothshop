@@ -1,26 +1,41 @@
 <div class="coupon-list">
-	<?php foreach($coupons as $c):?>
-	<div class="coupon item-container" cid="<?php echo $c['coupon_id'];?>">
-		<div>Name: <?php echo $c['name'];?> (<?php echo $c['status'];?>)</div>
-		<div>Desc: <?php echo $c['desc'];?></div>
-		<div>Discount type: <?php echo $c['discount_type'];?></div>
-		<div>Amount: <?php echo $c['amount'];?> Baht</div>
-		<div>Amount threshold: <?php echo $c['amount_threshold'];?> Baht</div>
-		<div>Valid days: <?php echo $c['valid_day'];?></div>
-		<?php if($c['status'] == 'A'):?>
-			<button class="set-status-btn" status="I">Deactivate</button>
-		<?php else:?>
-			<button class="set-status-btn" status="A">Activate</button>
-		<?php endif;?>
-		<br/>
-		<form class="give-coupon-form">
-			<input type="hidden" name="coupon_id" value="<?php echo $c['coupon_id'];?>"/>
-			Give to <input type="text" name="customer_id" placeholder="customer ID"/><br/>
-			<input type="text" name="amount" placeholder="Number of coupons" /><br/>
-			<input type="submit"/>
-		</form>
-	</div>
+	<table class="admin-table">
+		<thead>
+			<th>Name</th>
+			<th>Desc</th>
+			<th>Discount<br/>Type</th>
+			<th>Amount<br/>(Baht/%)</th>
+			<th>Amount<br/>Threshold<br/>(Baht)</th>
+			<th>Valid<br/>Days</th>
+			<th>Activate</th>
+			<th>Give to<br/>Customer</th>
+		</thead>
+	
+	
+	<?php foreach($coupons as $i=>$c):?>
+		<tr class="<?php echo $i%2==0?'odd':'even';?> <?php echo $c['status'] == 'I'?'disabled':'';?>" cid="<?php echo $c['coupon_id'];?>">
+			<td><?php echo $c['name'];?> (<?php echo $c['status'];?>)</td>
+			<td><?php echo $c['desc'];?></td>
+			<td><?php echo $c['discount_type'];?></td>
+			<td><?php echo $c['amount'];?></td>
+			<td><?php echo $c['amount_threshold'];?></td>
+			<td><?php echo $c['valid_day'];?></td>
+			<?php if($c['status'] == 'A'):?>
+				
+				<td><button class="set-status-btn" status="I">Deactivate</button></td>
+				<td><form class="give-coupon-form">
+					<input type="hidden" name="coupon_id" value="<?php echo $c['coupon_id'];?>"/>
+					<input type="text" name="customer_id" placeholder="customer ID"/><br/>
+					<input type="text" name="amount" placeholder="Number of coupons" /><br/>
+					<input type="submit"/>
+				</form></td>
+			<?php else:?>
+				<td><button class="set-status-btn" status="A">Activate</button></td>
+				<td>&nbsp;</td>
+			<?php endif;?>	
+		</tr>
 	<?php endforeach;?>
+	</table>
 	
 	<form class="add-coupon-form item-container">
 		<div>Name: <input type="text" name="name"/></div>
@@ -61,7 +76,7 @@
 			var statusText = $(this).html();
 			if(confirm(statusText + " the coupon?"))
 			{
-				var id = $(this).parent().attr('cid');
+				var id = $(this).parents('tr').attr('cid');
 				var status = $(this).attr('status');
 				$('.coupon-list').waiting();
 				$.post(base_url+'index.php/admin/set_coupon_status', 

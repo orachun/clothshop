@@ -264,7 +264,8 @@ class Shopping_bag extends CI_Controller
             $user_info['customer_id'] = $this->User_model->record_customer($user_info);
         }
         
-        $store_order_id = $this->Others_model->get_current_store_order()->store_order_id;
+		$store_order = $this->Others_model->get_current_store_order();
+        $store_order_id = $store_order['store_order_id'];
         
         $cart_info = array(
             'items' => array(),

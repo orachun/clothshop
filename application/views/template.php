@@ -4,7 +4,7 @@
     <!------------------------------HEADER----------------------------------------->
     <head>
         <meta http-equiv="content-Type" content="text/html; charset=utf-8">
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico"> 
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico?dummy=dummy"> 
         <script type="text/javascript">
 			base_url = "<?php echo base_url(); ?>";
 <?php
@@ -161,7 +161,8 @@ foreach (___config() as $k => $v)
 	echo '<option vlaue="' . $i . '">' . $i . '</option>'; ?>
                             </select>
                         </div>
-                        <div><label class="label">เวลาที่ชำระ</label>
+                        <div>
+							<label class="label">เวลาที่ชำระ</label>
                             <select name="paid_hr">
 								<?php for ($i = 0; $i <= 23; $i++)
 									echo '<option vlaue="' . $i . '">' . $i . '</option>'; ?>
@@ -171,7 +172,10 @@ foreach (___config() as $k => $v)
 	echo '<option vlaue="' . $i . '">' . $i . '</option>'; ?>
                             </select> น.
                         </div>
-                        <div><label class="label">จำนวนเงิน</label><input name="paid-amount" type="text"/></div>
+                        <div>
+							<label class="label">จำนวนเงิน</label>
+							<input name="paid_amount" type="text"/>
+						</div>
                         <input type="hidden" name="name" value=""/>
                         <div class="uploader"></div>
                         <span class="button ui-corner-all payment-inform-btn">แจ้งชำระเงิน</span>

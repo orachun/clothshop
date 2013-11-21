@@ -1,30 +1,44 @@
-<style>
-/*    .page-list .edit-container, .page-list .add-page
-    {
-        margin: 20px;
-        border: solid 1px gray;
-        border-radius: 4px;
-        padding: 20px;
-    }*/
-</style>
 <div class="page-list">
-    <?php foreach($pages as $p):?>
-    <div class="page-container item-container" pid="<?php echo $p['id'];?>">
-        <a href="<?php echo base_url().'index.php/page/content/'.$p['link_name'];?>" target="_blank"><?php echo $p['name'];?></a><br/>
-        <button class="del-page" pid="<?php echo $p['id'];?>">Del</button>
-        <button class="edit-btn">Edit</button>
-        <form class="edit-container">
-            <input type="hidden" name="id" value="<?php echo $p['id'];?>"/>
-            Name: <input type="text" name="name" value="<?php echo $p['name'];?>"/><br/>
-            Link: <input type="text" name="link_name" value="<?php echo $p['link_name'];?>"/><br/>
-            <textarea name="content" class="page-content"><?php echo $p['content'];?></textarea><br/>
-            <button class="save_page">Save</button>
-        </form>
-    </div>
-    <?php endforeach;?>
+	<table class="admin-table">
+		<thead>
+			<th>Title</th>
+			<th>Link Name</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</thead>
+		<tbody>
+			<?php foreach($pages as $i=>$p):?>
+			<tr class="<?php echo $i%2==0?'odd':'even';?>"  pid="<?php echo $p['id'];?>">
+				<td>
+					<a href="<?php echo base_url().'index.php/page/content/'.$p['link_name'];?>" target="_blank">
+						<?php echo $p['name'];?>
+					</a>
+				</td>
+				<td><?php echo $p['link_name'];?></td>
+				<td><button class="del-page" pid="<?php echo $p['id'];?>">Del</button></td>
+				<td>
+					<button class="edit-btn">Edit</button>
+					<form class="edit-container" style="text-align: left;">
+						<button class="save_page">Save</button>
+						<input type="hidden" name="id" value="<?php echo $p['id'];?>"/>
+						Name: 
+						<input type="text" name="name" value="<?php echo $p['name'];?>" size="50"/>
+						Link: 
+						<input type="text" name="link_name" value="<?php echo $p['link_name'];?>"/>
+						<br/>
+						<textarea name="content" class="page-content">
+							<?php echo $p['content'];?>
+						</textarea><br/>
+					</form>
+				</td>
+			</tr>
+			<?php endforeach;?>
+		</tbody>
+	</table>
+    
     <br/><br/><br/>
     <form class="add-page">
-        Name: <input type="text" name="name"/><br/>
+        Name: <input type="text" name="name" size="50"/><br/>
         Link: <input type="text" name="link_name"/><br/>
         <textarea id="new-page-content" name="content"></textarea><br/>
 		<a href="http://www.picdee.com/" target="_blank">Upload Image</a><br/>
@@ -41,8 +55,8 @@
             {
                 $(this).parent().find('.edit-container').show();
                 $(this).html('Hide');
-				var id = $(this).parents(".page-container").attr("pid");
-				initEditor('.page-list .page-container[pid="'+id+'"] .page-content');
+				var id = $(this).parents("tr").attr("pid");
+				initEditor('.page-list tr[pid="'+id+'"] .page-content');
             }
             else
             {
@@ -52,7 +66,7 @@
         });
         
 		
-		$('.page-list .page-container .edit-container').submit(function(){
+		$('.page-list .edit-container').submit(function(){
 			$('.page-list').waiting();
 			$.post(base_url+'index.php/admin/edit_page', $(this).serialize(), function(){
                 $('.page-list').parent().load(base_url+'index.php/admin/page');
