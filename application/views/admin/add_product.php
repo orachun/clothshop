@@ -10,7 +10,7 @@
         <option value="<?php echo $c->product_cat_id;?>"><?php echo $c->name;?></option>
         <?php endforeach;?>
         </select>
-        Name: <input type="text" name="name"/><br/>
+        Name: <input type="text" name="name" size="40"/><br/>
         Desc: <textarea name="desc"></textarea><br/>
         Cost Unit price: <input type="text" name="cost"/> 
         Selling Unit price: <input type="text" name="unit_price"/><br/>
@@ -30,13 +30,13 @@
         <?php endforeach;?>
 		</div>
         
-        <!--<div>Supplier</div>-->
-<!--        <select name="supplier">
+        <div>Supplier</div>
+        <select name="supplier">
             <?php foreach($suppliers as $c):?>
             <option value="<?php echo $c->supplier_id;?>"><?php echo $c->name;?></option>
             <?php endforeach;?>
-        </select>-->
-        Product URL: <input type="text" name="supplier_product_url"/><br/>
+        </select>
+        Product URL: <input type="text" name="supplier_product_url" size="50"/><br/>
         Image URLs: <textarea name="imgs"></textarea><br/>
         <div><input class="submit-btn" type="button" value="Submit"/></div>
     </form>

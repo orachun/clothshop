@@ -20,7 +20,7 @@
 <script type="text/javascript">
     $('.category .add_btn').click(function(){
         var name = $('.category .add input').val();
-        $.post(base_url+'index.php/admin/category_add/'+name, function(){
+        $.post(base_url+'index.php/admin/category_add', {'name':name}, function(){
             $('.category').parent().load(base_url+'index.php/admin/category');
         });
     });

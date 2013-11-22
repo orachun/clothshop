@@ -26,18 +26,16 @@ table th
 	font-weight: bold;
 }
 
-a
-{
-    text-decoration: none;
-    color: #ce7fa0;
-}
+a,
 a:visited
 {
-    color: #ce7fa0;
+    text-decoration: none;
+    color: #704C58;
 }
 a:hover
 {
     text-decoration: none;
+    color: white;
 }
 
 h1,h2,h3{ color: #ce7fa0;}

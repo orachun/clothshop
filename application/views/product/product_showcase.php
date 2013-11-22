@@ -4,6 +4,7 @@
 		<?php echo $title_th; ?>
 	</div>
     <div class="showcase-content" id="most-viewed-tab">
+		<!--TODO: check id-->
 		<div class="product-showcase" target=".<?php echo $name; ?>-detail-placeholder">
 			<?php
 			foreach ($products as $p)
@@ -16,7 +17,7 @@
 	</div>
 </div>
 
-<script type="text/javascrpit">
+<script type="text/javascript">
 	$(function(){
 		slide(".product-showcase", ".product-grid-item", items_per_row, 5000, 800);
 	});

@@ -109,9 +109,9 @@ class Product_model extends CI_Model
         return $this->db->get('supplier')->result();
     }
     
-    public function add_supplier($name, $url)
+    public function add_supplier($name, $url, $note)
     {
-        $this->db->insert('supplier', array('name' => $name, 'url' => $url));
+        $this->db->insert('supplier', array('name' => $name, 'url' => $url, 'note' => $note));
     }
     public function del_supplier($sid)
     {

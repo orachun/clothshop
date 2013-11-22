@@ -105,4 +105,16 @@ class Order_model extends CI_Model
 	{
 		return $this->db->get('_unordered_store_product')->result_array();
 	}
+	
+	public function get_order($oid)
+	{
+		$orders = $this->db->get_where('customer_order', array('order_id'=>$oid))->result_array();
+		if(count($orders) == 0)
+		{
+			return null;
+		}
+		$order = $orders[0];
+		$order['items'] = $this->db->get_where('order_item', array('order_id'=>$oid))->result_array();
+		return $order;
+	}
 }

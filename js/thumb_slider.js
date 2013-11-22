@@ -17,7 +17,8 @@ function slide(container_selector, thumb_selector, items_per_row, delay, animati
             thumb_slider.append('<div id="thumb-slider-row-'+(i+1)+'"></div>');
             for(var j=0;j<items_per_row && i*items_per_row+j<total_thumbs;j++)
             {
-                thumb_slider.find("#thumb-slider-row-"+(i+1)).append($(container.find(thumb_selector)[0]));
+                thumb_slider.find("#thumb-slider-row-"+(i+1))
+						.append($(container.find(thumb_selector)[0]));
                 thumb_slider.find("#thumb-slider-row-"+(i+1)).append(' ');
             }
         }

@@ -1,6 +1,7 @@
 <?php echo doctype();?>
 <html>
     <head>
+        <meta http-equiv="content-Type" content="text/html; charset=utf-8">
         <style>
             body { font-size: 12px;}
 			.item-container
@@ -61,6 +62,7 @@
         <script src="<?php echo base_url(); ?>libs/jquery.waiting/jquery.waiting.js"></script>
         <script src="<?php echo base_url(); ?>libs/tinymce/tinymce.min.js"></script>
         <script src="<?php echo base_url(); ?>js/admin.js"></script>
+        <script src="<?php echo base_url(); ?>js/other_functions.js"></script>
         <script type="text/javascript">
             base_url = '<?php echo base_url();?>';
             $(function(){

@@ -19,6 +19,7 @@
 						<?php echo $o['display_id'];?>
 					</a>
 					(<?php echo $o['order_id'];?>)
+					<button oid="<?php echo $o['order_id'];?>" class="detail-btn">Detail</button>
 				</td>
 				<td><?php echo $o['status'];?></td>
 				<td><?php echo $o['net_total'];?></td>
@@ -74,5 +75,10 @@
                 $('.payment-checking').parent().load(base_url+'index.php/admin/payment_checking');
             });
         });
+		
+		$('.payment-checking .detail-btn').click(function(){
+			var oid = $(this).attr('oid');
+			modal('url', base_url+'index.php/admin/order_detail/'+oid, 'Order '+oid);
+		});
     });
 </script>

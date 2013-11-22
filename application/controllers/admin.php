@@ -21,9 +21,9 @@ class Admin extends CI_Controller
         $data['cats'] = $this->Product_model->get_cat();
         $this->load->view('admin/category', $data);
     }
-    public function category_add($name)
+    public function category_add()
     {
-        $this->Product_model->add_cat($name);
+        $this->Product_model->add_cat($this->input->post('name'));
     }
     public function category_del($name)
     {
@@ -37,7 +37,7 @@ class Admin extends CI_Controller
     }
     public function supplier_add()
     {
-        $this->Product_model->add_supplier($this->input->post('name'), $this->input->post('url'));
+        $this->Product_model->add_supplier($this->input->post('name'), $this->input->post('url'), $this->input->post('note'));
     }
     public function supplier_del()
     {
@@ -113,6 +113,12 @@ class Admin extends CI_Controller
 		}
         $this->load->view('admin/payment_checking', $data);
     }
+	public function order_detail($oid)
+	{
+		$this->load->model('Order_model');
+		$data['order'] = $this->Order_model->get_order($oid);
+		$this->load->view('admin/order_detail', $data);
+	}
     public function order_set_checked()
     {
         $this->db->where('order_id', $this->input->post('order_id'));

@@ -24,10 +24,7 @@
 				
 				<td><button class="set-status-btn" status="I">Deactivate</button></td>
 				<td><form class="give-coupon-form">
-					<input type="hidden" name="coupon_id" value="<?php echo $c['coupon_id'];?>"/>
-					<input type="text" name="customer_id" placeholder="customer ID"/><br/>
-					<input type="text" name="amount" placeholder="Number of coupons" /><br/>
-					<input type="submit"/>
+					<input type="hidden" name="coupon_id" value="<?php echo $c['coupon_id'];?>"/><input type="text" name="customer_id" placeholder="customer ID" size="11"/><input type="text" name="amount" placeholder="Number of coupons" /><input type="submit"/>
 				</form></td>
 			<?php else:?>
 				<td><button class="set-status-btn" status="A">Activate</button></td>
