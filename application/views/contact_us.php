@@ -1,5 +1,5 @@
 <style>
-    .contact-us img
+    .contact-us .icon
     {
         vertical-align: middle;
         width: 16px;
@@ -30,10 +30,7 @@
     </form>
 
     <h1>ช่องทางอื่นๆ</h1>
-    <div><img src="<?php echo base_url();?>images/icons/mobile.png"/>: 0123456789</div>
-    <div><img src="<?php echo base_url();?>images/icons/email.png"/>: a@a.com</div>
-    <div><img src="<?php echo base_url();?>images/icons/facebook.png"/>: <a href="http://www.facebook.com/page" target="_blank">http://www.facebook.com/page</a></div>
-    <div><img src="<?php echo base_url();?>images/icons/line.png"/>: ___aaa</div>
+    <?php contact_info(true);?>
 </div>
 <script type="text/javascript">
     $('.contact-us .send-btn').click(function(){

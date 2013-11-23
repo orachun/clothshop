@@ -67,18 +67,18 @@
     </div>
     <div class="order-info-section">
         <div class="section-header">ข้อมูลการสั่งซื้อ</div>
-        <div><label class="label">เลขที่ใบสั่งซื้อ</label><?php echo $display_id;?></div>
-        <div><label class="label">วันที่สั่งซื้อ</label><?php echo $ordered_datetime;?></div>
-        <div><label class="label">สถานะ</label><?php echo order_status($status);?></div>
-        <div><label class="label">วันที่จัดส่งสินค้า</label><?php echo empty($delivered_date)?'-': $delivered_date;?></div>
-        <div><label class="label">เลขพัสดุ</label><?php echo empty($tracking_no)?'-': $tracking_no;?></div>
+        <div><label class="label">เลขที่ใบสั่งซื้อ: </label><?php echo $display_id;?></div>
+        <div><label class="label">วันที่สั่งซื้อ: </label><?php echo $ordered_datetime;?></div>
+        <div><label class="label">สถานะ: </label><?php echo order_status($status);?></div>
+        <div><label class="label">วันที่จัดส่งสินค้า: </label><?php echo empty($delivered_date)?'-': $delivered_date;?></div>
+        <div><label class="label">เลขพัสดุ: </label><?php echo empty($tracking_no)?'-': $tracking_no;?></div>
     </div>
     <div class="receiver-info-section">
         <div class="section-header">ข้อมูลผู้รับสินค้า</div>
-        <div><label class="label">ชื้อผู้รับ</label><?php echo $receiver_name;?></div>
-        <div><label class="label">ที่อยู่ผู้รับ</label><?php echo $delivery_addr;?></div>
-        <div><label class="label">โทร.</label><?php echo $tel;?></div>
-        <div><label class="label">อีเมล์</label><?php echo $email;?></div>
+        <div><label class="label">ชื้อผู้รับ: </label><?php echo $receiver_name;?></div>
+        <div><label class="label">ที่อยู่ผู้รับ: </label><?php echo $delivery_addr;?></div>
+        <div><label class="label">โทร.: </label><?php echo $tel;?></div>
+        <div><label class="label">อีเมล์: </label><?php echo $email;?></div>
     </div>
     <div class="ordered-item-section">
         <div class="section-header">รายการสินค้า</div>
@@ -110,4 +110,6 @@
         <span class="section-header">รวมทั้งสิ้น: </span>
         <?php echo number_format($net_total, 2);?> บาท
     </div>
+	
+	<div>สามารถดูได้ที่ <a href="<?php echo base_url().'index.php/order/display/'.$order_id;?>" target="_blank"><?php echo base_url().'index.php/order/display/'.$order_id;?></a></div>
 </div>

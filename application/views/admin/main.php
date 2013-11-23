@@ -71,7 +71,7 @@
         </script>
     </head>
     <body>
-		<?php load_js_sdk(true);?>
+		<?php fb_load_js_sdk(true);?>
 		<a href="<?php echo base_url();?>">Home</a>
         <div id="tabs">
             <ul>

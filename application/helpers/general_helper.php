@@ -7,6 +7,8 @@ function ___config($key = NULL)
         'base_path' => '/home/orachun/public_html/ci/',
         'items_per_page' => 10,
         'items_per_row' => 4,
+		'store_email' => 'prittila.shopping@gmail.com',
+		'store_email_password' => 'chun12345',
         'admin_email' => 'orachun.chun@gmail.com',
         'upload_file_delim' => '(][)',
 		'grid_item_thumb_width' => 200,
@@ -148,3 +150,18 @@ function order_status($status)
         case 'D': return 'จัดส่งสินค้าเรียบร้อยแล้ว';
     }
 }
+
+function contact_info($newline = false)
+{
+	?>
+	<img class="icon" src="<?php echo base_url(); ?>images/icons/mobile.png"/>: 0123456789
+	<?php if($newline) echo '<br/>';?>
+	<img class="icon" src="<?php echo base_url(); ?>images/icons/email.png"/>: <?php echo ___config('store_email'); ?>
+	<?php if($newline) echo '<br/>';?>
+	<img class="icon" src="<?php echo base_url(); ?>images/icons/line.png"/>: ___aaa        
+	<div>
+		<a href="https://www.facebook.com/prittila" target="_TOP" title="Prittila Fan Page"><img src="https://badge.facebook.com/badge/216408685185780.329.1577858336.png" style="border: 0px;" /></a>
+	</div>
+	<?php
+}
+

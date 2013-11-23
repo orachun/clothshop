@@ -2,7 +2,7 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
-function load_js_sdk($admin = false)
+function fb_load_js_sdk($admin = false)
 {
 	?>
 	<div id="fb-root"></div>
@@ -17,6 +17,12 @@ function load_js_sdk($admin = false)
 			});
 
 			// Additional initialization code such as adding Event Listeners goes here
+			
+			FB.Event.subscribe('xfbml.render',
+				function(href, widget) {
+					$('iframe').removeAttr('title');
+				}
+			);
 			
 			<?php if($admin): ?>
 			if(FB.getAuthResponse() === undefined)
@@ -106,18 +112,6 @@ function post_to_fb($img_path, $desc)
 
 function prepare_fb_desc($desc, $product_info, $link)
 {
-//	$p = array(
-//            'name' => $this->input->post('name'),
-//            'desc' => $this->input->post('desc'),
-//            'cat_id' => $this->input->post('cat_id'),
-//            'cost' => $this->input->post('cost'),
-//            'unit_price' => $this->input->post('unit_price'),
-//            'supplier_id' => $this->input->post('supplier_id'),
-//            'supplier_product_url' => $this->input->post('supplier_product_url'),
-//            'imgs' => $this->input->post('imgs'),
-//        );
-//        $p['color'] = explode(';', $this->input->post('color'));
-//        $p['size'] = explode(';', $this->input->post('size'));
 	$color_list = '';
 	$size_list = '';
 	foreach($product_info['size'] as $s)
@@ -160,7 +154,9 @@ function fb_default_desc()
 
 function like_btn($url, $return = false)
 {
-	$btn = '<iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($url).'&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=301848219953299" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:30px;" allowTransparency="true"></iframe>';
+	$url = 'http://www.google.com/?a='.rand(0, 10);
+	
+	$btn = '<div class="fb-like" data-href="'.$url.'" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>';
 	if($return)
 	{
 		return $btn;
@@ -168,5 +164,20 @@ function like_btn($url, $return = false)
 	else
 	{
 		echo $btn;
+	}
+}
+
+function fb_comments($url, $return = false)
+{
+	$url = 'http://www.google.com/?a='.rand(0, 10);
+	
+	$comments = '<div class="fb-comments" data-href="'.$url.'" data-numposts="5" data-colorscheme="light"></div>';
+	if($return)
+	{
+		return $comments;
+	}
+	else
+	{
+		echo $comments;
 	}
 }

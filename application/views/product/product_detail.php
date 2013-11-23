@@ -59,8 +59,12 @@
         </form>
         <div class="pdesc"><?php echo $desc; ?></div>
 
-		<?php like_btn('http://www.google.com');?>
+		<?php like_btn(base_url().'index.php/product/detail/'.$product_id);?>
 
+		<?php fb_comments(base_url().'index.php/product/detail/'.$product_id);?>
+		<?php if($ajax):?>
+		<script type="text/javascript">FB.XFBML.parse();</script>
+		<?php endif;?>
     </div>
 </div>
 <div class="product-img-list">
@@ -74,6 +78,9 @@
 	endif;
 	?>
 </div>
+
+
+
 
 <script type="text/javascript">
 	$(function() {

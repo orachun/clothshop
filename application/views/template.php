@@ -67,7 +67,7 @@ foreach (___config() as $k => $v)
 
     <body>
         <!-------------------------------BODY------------------------------------------>
-		
+		<?php fb_load_js_sdk();?>
         <div id="topbar">
             <div id="logo-container">
                 <a href="<?php echo base_url() ?>index.php" title="หน้าแรก">
@@ -86,7 +86,7 @@ foreach (___config() as $k => $v)
 					});
                 </script>
 				
-				<?php like_btn('http://www.google.com');?>
+				<?php like_btn(base_url());?>
             </div>
 			
         </div>
@@ -110,10 +110,7 @@ foreach (___config() as $k => $v)
 
 
         <div class="bottom-bar">       
-            <img class="icon" src="<?php echo base_url(); ?>images/icons/mobile.png"/>: 0123456789
-            <img class="icon" src="<?php echo base_url(); ?>images/icons/email.png"/>: a@a.com
-            <img class="icon" src="<?php echo base_url(); ?>images/icons/facebook.png"/>: <a href="http://www.facebook.com/page" target="_blank">http://www.facebook.com/page</a>
-            <img class="icon" src="<?php echo base_url(); ?>images/icons/line.png"/>: ___aaa
+            <?php contact_info();?>
         </div>
     </body>
 </html>

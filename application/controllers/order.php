@@ -9,6 +9,7 @@ class Order extends CI_Controller
     
     public function display($order_id, $return = false)
     {
+		$data['order_id'] = $order_id;
         $this->load->helper('color');
         $data = array();
         $this->load->library('table');

@@ -79,4 +79,30 @@ class Others_model extends CI_Model
         return $colors[$color_en];
     }
     
+	
+	public function email($to, $subject, $message)
+	{
+		$this->load->library('email');
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_port']    = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = ___config('store_email');
+        $config['smtp_pass']    = ___config('store_email_password');
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'html'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not      
+
+		$from = ___config('store_email');
+		$from_name = 'Prittila';
+        $this->email->initialize($config);
+
+        $this->email->from($from, $from_name);
+        $this->email->to($to); 
+        $this->email->subject($subject);
+        $this->email->message($message);  
+		
+        return $this->email->send();
+	}
 }

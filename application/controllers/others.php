@@ -15,28 +15,39 @@ class Others extends CI_Controller
     }
     
     public function contact_us_submit()
-    {
-        $this->load->library('email');
-        $config['protocol']    = 'smtp';
-        $config['smtp_host']    = 'ssl://smtp.gmail.com';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = 'orachun.chun@gmail.com';
-        $config['smtp_pass']    = '14022010';
-        $config['charset']    = 'utf-8';
-        $config['newline']    = "\r\n";
-        $config['mailtype'] = 'text'; // or html
-        $config['validation'] = TRUE; // bool whether to validate email or not      
-
-        $this->email->initialize($config);
-
-        $this->email->from('orachun_chun@hotmail.com', 'Orachun');
-        $this->email->to('orachun.chun@gmail.com'); 
-        $this->email->subject('Contact from user');
-        $this->email->message($this->input->post('msg'));  
-
-        $this->email->send();
-        echo 'ok';
+    { 
+		$this->load->model('User_model');
+		$this->load->model('Others_model');
+		
+		$email = $this->User_model->current('email');
+		if(empty($email))
+		{
+			$email = $this->input->post('email');
+		}
+		$tel = $this->User_model->current('tel');
+		if(empty($tel))
+		{
+			$tel = $this->input->post('tel');
+		}
+		$name = $this->User_model->current('fullname');
+		if(empty($name))
+		{
+			$name = $this->input->post('name');
+		}
+		
+		$user_info = 'Name: '.$name.'<br/>Email: '.$email.'<br/>Tel: '.$tel.'<br/>Message:<br/><br/>';
+		
+		$this->Others_model->email(___config('store_email'), 
+				'Contact from user', $user_info.nl2br($this->input->post('msg'))
+				);
+        if($this->email->send())
+		{
+			echo 'ok';
+		}
+		else
+		{
+			echo 'กรุณาลองใหม่ภายหลังค่ะ';
+		}
     }
     
     

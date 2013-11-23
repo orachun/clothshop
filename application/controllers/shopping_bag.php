@@ -290,7 +290,14 @@ class Shopping_bag extends CI_Controller
         $order_id = $this->Order_model->add_order($user_info, $cart_info, $store_order_id, $selectedDeliverId, $selectedCouponId);
         
         $this->cart->destroy();
-        echo $order_id;
+        
+		$order_detail = file_get_contents(base_url().'index.php/order/display/'.$order_id);
+		$header = 'เรียน คุณ '.$receiverName.'<br/><br/>'
+				.'ขอบคุณที่สั่งซื้อสิ้นค้าจาก Prittila คุณสามารถดูรายละเอียดได้จากด้านล่างค่ะ <br/><br/>';
+		$footer = '<br/><br/>ขอบคุณค่ะ<br/>Prittila<br/>';
+		$this->Others_model->email($receiverEmail, 'ข้อมูลการสั่งซื้อสินค้า', $header.$order_detail.$footer);
+		
+		echo $order_id;
     }
     
     

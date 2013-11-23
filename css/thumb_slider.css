@@ -19,6 +19,6 @@
 {width:32px; height: 32px; display:inline-block;position:relative;top:234px;opacity:0.5;
 filter:alpha(opacity=50);cursor:pointer;}
 .gallery-inited .gallery-controller .prev-btn
-{background: url(../images/icons/prev.png); position:absolute; left:10px;}
+{background: url(../images/controls.png) no-repeat 0 -32px; position:absolute; left:10px;}
 .gallery-inited .gallery-controller .next-btn
-{background: url(../images/icons/next.png); position:absolute; right: 10px;}
+{background: url(../images/controls.png) no-repeat -43px -32px; position:absolute; right: 10px;}

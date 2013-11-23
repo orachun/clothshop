@@ -129,7 +129,7 @@ class Product extends CI_Controller
 		        'product',
 		        'product_detail'
 		    );
-        $data['footer'] = $this->Product_model->random();
+        $data['footer'] = $this->Product_model->random_products();
 			$data['contents'] = $this->load->view('product/product_detail', $data, TRUE);
 			$this->load->view('template', $data);
 		}
