@@ -129,13 +129,7 @@ class Product extends CI_Controller
 		        'product',
 		        'product_detail'
 		    );
-        $data['footer'] = '<div class="product-showcase-tabs product-grid">
-                                <ul>
-                                    <li><a href="#random-tab">สินค้าอื่นๆที่น่าสนใจ</a></li>
-                                </ul>
-                                <div id="random-tab">'.$this->random().'</div>
-                            </div>
-                            ';
+        $data['footer'] = $this->Product_model->random();
 			$data['contents'] = $this->load->view('product/product_detail', $data, TRUE);
 			$this->load->view('template', $data);
 		}

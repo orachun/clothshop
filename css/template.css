@@ -35,7 +35,6 @@ a:visited
 a:hover
 {
     text-decoration: none;
-    color: white;
 }
 
 h1,h2,h3{ color: #ce7fa0;}
@@ -49,9 +48,14 @@ h1,h2,h3{ color: #ce7fa0;}
     margin: 5px 5px 5px 0px;
 }
 
-.button a,.button a:hover, .button a:visited
+.button a, .button a:visited
 {
 	color: inherit;
+	text-decoration: none;
+}
+.button a:hover
+{
+	color: white;
 	text-decoration: none;
 }
 

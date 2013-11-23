@@ -10,7 +10,10 @@ class User extends CI_Controller
 	
 	public function login()
 	{
-		if($this->User_model->login() === TRUE)
+		$email = $this->input->post("email");
+		$pass = $this->input->post("pass");
+		$remember = ($this->input->post("remember")=='on');
+		if($this->User_model->login($email, $pass, $remember) === TRUE)
         {
             echo 'ok';
         }

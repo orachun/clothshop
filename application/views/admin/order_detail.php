@@ -1,6 +1,7 @@
 <div class="order-detail">
 	<div>ID: <?php echo $order['order_id'];?></div>
 	<div>Display ID: <?php echo $order['display_id'];?></div>
+	<div>Store Order ID: <?php echo $order['store_order_id'];?></div>
 	<div>Customer ID: <?php echo $order['customer_id'];?></div>
 	<div>Customer Coupon ID: <?php echo $order['customer_coupon_id'];?></div>
 	<div>Net Total: <?php echo $order['net_total'];?></div>

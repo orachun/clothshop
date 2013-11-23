@@ -41,7 +41,7 @@ function slide(container_selector, thumb_selector, items_per_row, delay, animati
                 });
             },
             beforeActivate: function(event, ui) {
-                $(this).css('height', $(this).height());
+                $(this).css('height', Math.round($(this).height()));
                 $(this).css('overflow', 'hidden');
             },
             activate: function(event, ui) {

@@ -117,9 +117,10 @@ class Product_model extends CI_Model
     {
         $this->db->delete('supplier', array('supplier_id' => $sid)); 
     }
-    public function add_product($p)
+    public function add_product($p, $fb_desc)
     {
 		$this->load->helper('image');
+		$this->load->helper('facebook');
 		
 		//Save product data
         $this->db->insert('product', array(
@@ -158,16 +159,20 @@ class Product_model extends CI_Model
         mkdir($img_dir.'thumbs', 0777, TRUE);
         umask($old);
         $img_urls = preg_split("/\r\n|\n|\r/", $p['imgs']);
-		try{
+		
+		$fb_desc = prepare_fb_desc($fb_desc, $p, base_url().'product/detail/'.$pid);
+		
         foreach($img_urls as $i=>$u)
         {
             if(empty($u)) continue;
-            $u = trim($u);
+			$u = preg_replace('/\s+/', '', $u);
+			$result_file = $img_dir.'imgs/'.$i.'.jpg';
+			image_download($u, $result_file, $img_dir.'thumbs/'.$i.'.jpg');
 			
-			image_download($u, $img_dir.'imgs/'.$i.'.jpg', $img_dir.'thumbs/'.$i.'.jpg');
+			post_to_fb($result_file, $fb_desc);
         }
 		image_grid_item_prepare($img_urls[0], $img_dir.'thumb.jpg');
-		}catch(Exception $e){echo $e->getMessage();}
+		
     }
     
     

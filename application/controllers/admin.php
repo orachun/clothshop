@@ -8,6 +8,7 @@ class Admin extends CI_Controller
         $this->load->model('User_model');
         $this->load->model('Product_model');
         $this->load->model('Others_model');
+		$this->load->helper('facebook');
     }
     
     public function main()
@@ -59,13 +60,13 @@ class Admin extends CI_Controller
             'cat_id' => $this->input->post('cat_id'),
             'cost' => $this->input->post('cost'),
             'unit_price' => $this->input->post('unit_price'),
-//            'supplier_id' => $this->input->post('supplier_id'),
+            'supplier_id' => $this->input->post('supplier_id'),
             'supplier_product_url' => $this->input->post('supplier_product_url'),
             'imgs' => $this->input->post('imgs'),
         );
         $p['color'] = explode(';', $this->input->post('color'));
         $p['size'] = explode(';', $this->input->post('size'));
-        $this->Product_model->add_product($p);
+        $this->Product_model->add_product($p, $this->input->post('fb_desc'));
     }
     public function store_order()
     {

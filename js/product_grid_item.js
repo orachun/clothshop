@@ -26,7 +26,7 @@ $(function(){
             scrollTop: container.offset().top - 20
         }, 700);
         container.animate({
-            "min-height": "600px"
+            "height": "600px"
         }, 700, function() {
             $.get(base_url+'index.php/product/detail/' + pid + '/true', function(data) {
                 container.append(data);

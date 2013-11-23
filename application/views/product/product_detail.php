@@ -59,7 +59,7 @@
         </form>
         <div class="pdesc"><?php echo $desc; ?></div>
 
-
+		<?php like_btn('http://www.google.com');?>
 
     </div>
 </div>

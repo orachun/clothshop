@@ -1,5 +1,5 @@
 <style>
-    .add-product textarea{width: 80%; height: 130px; display: block;}
+    .add-product textarea{width: 60%; height: 130px; display: block;}
 </style>
 
 <div class="add-product">
@@ -38,6 +38,8 @@
         </select>
         Product URL: <input type="text" name="supplier_product_url" size="50"/><br/>
         Image URLs: <textarea name="imgs"></textarea><br/>
+        Facebook Desc: (<?php echo fb_desc_placeholder_list();?>)
+		<textarea name="fb_desc"><?php echo fb_default_desc();?></textarea><br/>
         <div><input class="submit-btn" type="button" value="Submit"/></div>
     </form>
 </div>
@@ -55,8 +57,9 @@
 			$('.add-product input[name="color"]:checked').each(function(index, element){
 				color += $(element).val()+";";
 			});
-			$.post(base_url+'index.php/admin/add_product_submit', $('.add-product form').serialize()+"&color="+color+"&size="+size, function(data){
+			$.post(base_url+'index.php/admin/add_product_submit', $('.add-product form').serialize()+"&color="+color+"&size="+size+'&access_token='+fb_access_token, function(data){
 				$('.add-product').parent().load(base_url+'index.php/admin/add_product_form');
+				$('body').append('<div>'+data+'</div>');
 			});
 		});
 

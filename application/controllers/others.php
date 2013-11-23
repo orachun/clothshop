@@ -9,7 +9,8 @@ class Others extends CI_Controller
     
     public function contact_us_form()
     {
-        $data['is_logged_in'] = $this->session->userdata('IS_LOGGED_IN');
+		$this->load->model('User_model');
+        $data['is_logged_in'] = $this->User_model->is_logged_in();
         $this->load->view('contact_us', $data);
     }
     

@@ -147,8 +147,7 @@ function reloadTab(tab)
     {
         tabContent.waiting();
         tabContent.load(tabContent.attr("url"), function(){
-            
-        tabContent.waiting('done');
+			tabContent.waiting('done');
         });
     }
 }

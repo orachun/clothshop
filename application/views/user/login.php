@@ -16,13 +16,16 @@
     }
 </style>
 <div class="login-form">
-	<form class="login">
+	<form class="login"><?php set_cookie(array('name'=> 'login_cookie', 'value'=>1));echo get_cookie('login_cookie');?>
 		<h1>ลงชื่อเข้าใช้</h1>
 		<div class="form-item form-item-email">
 			<input name="email" type="text" placeholder="อีเมล์"/>
 		</div>
 		<div class="form-item form-item-pass">
 			<input name="pass" type="password" placeholder="รหัสผ่าน" />
+		</div>
+		<div class="form-item">
+			<label><input type="checkbox" name="remember"/>จดจำการลงชื่อเข้าใช้</label>
 		</div>
 		<div class="form-item form-item-login-btn">
 			<input class="login-btn ui-corner-all button" type="submit" value="ลงชื่อเข้าใช้"/>

@@ -5,29 +5,52 @@ class User_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+		$this->load->helper('cookie');
     }
     
     public function current($field = NULL)
     {
+		$uid = get_cookie('login_cookie');
+		if(!empty($uid))
+		{
+			$query = $this->db->get_where('customer', array('customer_id' => $uid));
+			if($query->num_rows()>0)
+			{
+				$user_info = $query->row();
+			}
+		}
+		if(empty($user_info))
+		{
+			return null;
+		}
         if(empty($field))
         {
-            return $this->session->userdata('USER_DATA');
+            return $user_info;
         }
         else
         {
-            return $this->session->userdata('USER_DATA')->$field;
+            return $user_info->$field;
         }
     }
     
-    public function login()
+    public function login($email, $pass, $remember)
     {
-		$email = $this->input->post("email");
-		$pass = $this->input->post("pass");
         $query = $this->db->get_where('customer', array('email' => $email, 'pass' => md5($pass)));
         if ($query->num_rows() > 0)
         {
-            $this->session->set_userdata('USER_DATA', $query->row());
-            $this->session->set_userdata('IS_LOGGED_IN', TRUE);
+			$user_info = $query->row();
+			$cookie = array(
+				'name'   => 'login_cookie',
+				'value'  => $user_info->customer_id,
+				'secure' => FALSE,
+				'expire' => 0,
+			);
+			if($remember)
+			{
+				$cookie['expire'] = mktime(0, 0, 0, 0, 0, 10);
+			}
+			$this->input->set_cookie($cookie);
+			
             return TRUE;
         }
 		else
@@ -38,8 +61,7 @@ class User_model extends CI_Model
     
     public function logout()
     {
-        $this->session->unset_userdata('USER_DATA');
-        $this->session->set_userdata('IS_LOGGED_IN', FALSE);
+		delete_cookie('login_cookie');
     }
     
     public function register($user_info)
@@ -85,7 +107,6 @@ class User_model extends CI_Model
             'registered_date' => date('Y-m-d')
          );
         $this->db->insert('customer', $data); 
-        $this->session->set_userdata('IS_LOGGED_IN', FALSE);
         return $this->db->insert_id();
     }
     
@@ -97,7 +118,7 @@ class User_model extends CI_Model
     
     public function is_logged_in()
     {
-		return $this->session->userdata('IS_LOGGED_IN') === TRUE;
+		return $this->current() != null;
     }
     
     public function is_admin()
@@ -142,17 +163,7 @@ class User_model extends CI_Model
     {
         $this->db->where('customer_id', $this->current('customer_id'));
         $this->db->update('customer', $user_info); 
-        if($this->db->affected_rows() == 1)
-        {
-            $user_data = $this->db->get_where('customer', array('customer_id' => $this->current('customer_id')))->row();
-            $this->session->set_userdata('USER_DATA', $user_data);
-            return TRUE;
-        }
-        else
-        {
-            return FALSE;
-        }
-        
+        return ($this->db->affected_rows() == 1);        
     }
     
     public function change_pass($old, $new)

@@ -67,7 +67,7 @@ foreach (___config() as $k => $v)
 
     <body>
         <!-------------------------------BODY------------------------------------------>
-
+		
         <div id="topbar">
             <div id="logo-container">
                 <a href="<?php echo base_url() ?>index.php" title="หน้าแรก">
@@ -85,7 +85,10 @@ foreach (___config() as $k => $v)
 						//                    $('#topbar #product-cat').ddslick();
 					});
                 </script>
+				
+				<?php like_btn('http://www.google.com');?>
             </div>
+			
         </div>
 
 

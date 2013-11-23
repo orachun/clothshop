@@ -133,8 +133,8 @@ class Shopping_bag extends CI_Controller
     
     public function coupon_deliver($return = false)
     {
-        $data['is_logged_in'] = $this->session->userdata('IS_LOGGED_IN');
-        if($this->session->userdata('IS_LOGGED_IN') === FALSE)
+        $data['is_logged_in'] = $this->User_model->is_logged_in();
+        if($data['is_logged_in'] === FALSE)
         {
             $data['coupons'] = NULL;
         }
