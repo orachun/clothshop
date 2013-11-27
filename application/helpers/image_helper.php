@@ -34,14 +34,14 @@ function image_prepare($img_path, $result_path = NULL, $width = 0, $height = 0, 
 	{
 		$img = $img->resize($width, $height);
 	}
-	if($watermark)
-	{
-		$w = $img->getWidth();
-		$h = $img->getHeight();
-		$watermark = WideImage::load(___config('watermark'))
-				->resize($w-0.1*$w, $h-0.1*$h);
-		$img = $img->merge($watermark, 'center', 'bottom-5%', 30);
-	}
+//	if($watermark)
+//	{
+//		$w = $img->getWidth();
+//		$h = $img->getHeight();
+//		$watermark = WideImage::load(___config('watermark'))
+//				->resize(0.5*$w);
+//		$img = $img->merge($watermark, 'right', 'bottom-5%', 90);
+//	}
 	
 	if($save)
 	{

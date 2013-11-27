@@ -119,17 +119,17 @@ class Product extends CI_Controller
 	
 	public function detail($pid, $ajax = 'false')
 	{
-        
 		$data = $this->Product_model->get_product($pid);
         $data['ajax'] = $ajax;
-		if($ajax == 'false')
+
+		if(strcmp($ajax,'false')==0)
 		{
 			$data['title'] = 'Product Detail';
 		    $data['_css'] = array(
 		        'product',
 		        'product_detail'
 		    );
-        $data['footer'] = $this->Product_model->random_products();
+			$data['footer'] = $this->Product_model->random_products();
 			$data['contents'] = $this->load->view('product/product_detail', $data, TRUE);
 			$this->load->view('template', $data);
 		}

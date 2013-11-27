@@ -162,6 +162,7 @@ class Product_model extends CI_Model
 		
 		$fb_desc = prepare_fb_desc($fb_desc, $p, base_url().'product/detail/'.$pid);
 		
+		image_grid_item_prepare($img_urls[0], $img_dir.'thumb.jpg');
         foreach($img_urls as $i=>$u)
         {
             if(empty($u)) continue;
@@ -171,7 +172,6 @@ class Product_model extends CI_Model
 			
 			post_to_fb($result_file, $fb_desc);
         }
-		image_grid_item_prepare($img_urls[0], $img_dir.'thumb.jpg');
 		
     }
     
@@ -212,10 +212,7 @@ class Product_model extends CI_Model
     {
         $result = $this->db->get_where('product_property', 
                 array('product_id' => $pid, 'key' => $key))->result_array();
-        if(count($result) == 1)
-        {
-            $result = $result[0];
-        }
+        
         return $result;
     }
 	

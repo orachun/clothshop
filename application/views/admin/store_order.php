@@ -44,7 +44,7 @@
 		$('.store-order .del_btn').click(function(){
 			if(confirm("Delete?"))
 			{
-				var sid = $(this).parent().attr('oid');
+				var sid = $(this).parents('tr').attr('oid');
 				$.post(base_url+'index.php/admin/del_store_order', {
 					'sid': sid
 				}, reload);

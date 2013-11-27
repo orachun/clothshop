@@ -49,10 +49,6 @@
 				}
 				?>
 
-<!--                <input id="qty-custom" name="qty" type="radio" value="4"/>
-<label for="qty-custom">
-	<input class="quantity" id="custom-quantity" type="text" name="quantity" value="4" />
-</label>-->
                 &nbsp;&nbsp;ชิ้น
             </div>
             <div class="form-item form-item-buy-btn ui-corner-all button"><img src="<?php echo base_url(); ?>images/shopping-bag.png">ซื้อ</div>
@@ -78,7 +74,6 @@
 	endif;
 	?>
 </div>
-
 
 
 
