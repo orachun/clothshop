@@ -3,6 +3,8 @@
 </style>
 
 <div class="add-product">
+	<div>
+			</div>
     <form>
 		Category:
         <select name="cat_id">
@@ -14,6 +16,7 @@
         Desc: <textarea name="desc"></textarea><br/>
         Cost Unit price: <input type="text" name="cost"/> 
         Selling Unit price: <input type="text" name="unit_price"/><br/>
+		<a href="http://www.bot.or.th/Thai/Statistics/FinancialMarkets/ExchangeRate/_layouts/Application/ExchangeRate/ExchangeRate.aspx#" target="_blank">Exchange rate</a>
 		<div>
         Size: 
         <label><input name="size" type="checkbox" value="R"/>Regular</label>
@@ -29,13 +32,13 @@
         <label><input name="color" type="checkbox" value="<?php echo $cen.':'.$cth;?>"/><?php echo $cth;?></label>
         <?php endforeach;?>
 		</div>
-        
+<!--        
         <div>Supplier</div>
         <select name="supplier">
             <?php foreach($suppliers as $c):?>
             <option value="<?php echo $c->supplier_id;?>"><?php echo $c->name;?></option>
             <?php endforeach;?>
-        </select>
+        </select>-->
         Product URL: <input type="text" name="supplier_product_url" size="50"/><br/>
         Image URLs: <textarea name="imgs"></textarea><br/>
         Facebook Desc: (<?php echo fb_desc_placeholder_list();?>)
@@ -46,6 +49,7 @@
 
 <script type="text/javascript">
 	$(function(){
+			
 		$('.add-product .submit-btn').click(function(){
 			$('.add-product').waiting();
 

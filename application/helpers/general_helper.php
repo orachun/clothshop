@@ -4,7 +4,7 @@
 function ___config($key = NULL)
 {
     $___config = array(
-        'base_path' => '/home/orachun/public_html/ci/',
+        'base_path' => '/home/chun/public_html/prittila/',
         'items_per_page' => 10,
         'items_per_row' => 4,
 		'store_email' => 'prittila.shopping@gmail.com',

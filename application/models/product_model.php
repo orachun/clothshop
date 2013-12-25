@@ -11,16 +11,28 @@ class Product_model extends CI_Model
     {
         $this->db->query('update product set views = views+1 where product_id="'.$pid.'"');
     }
-    
-    public function get_product($pid)
+    public function get_admin_products()
+	{
+		$query = $this->db->get('product');
+		$products = $query->result_array();
+		foreach($products as $i=>$p)
+		{
+			$products[$i] = $this->get_product($p['product_id'], false);
+		}
+		return $products;
+	}
+    public function get_product($pid, $list_images = true)
     {
         $query = $this->db->get_where('product', array('product_id'=>$pid));
         if ($query->num_rows() > 0)
         {
             $data = $query->row_array();
-            $data['images'] = list_product_img('images/products/'.$pid.'/imgs/');
-            $data['thumbs'] = list_product_img('images/products/'.$pid.'/thumbs/'); 
-            $data['thumb'] = base_url().'images/products/'.$pid.'/thumb.jpg';
+			if($list_images)
+			{
+				$data['images'] = list_product_img('images/products/'.$pid.'/imgs/');
+				$data['thumbs'] = list_product_img('images/products/'.$pid.'/thumbs/'); 
+				$data['thumb'] = base_url().'images/products/'.$pid.'/thumb.jpg';
+			}
             $colors = $this->_get_product_prop($pid, 'color');
             $data['avail_colors'] = array();
             foreach($colors as $c)
@@ -131,7 +143,7 @@ class Product_model extends CI_Model
             'unit_price' => $p['unit_price'],
             'price_before_sale' => -1,
             'added_date' => date('Y-m-d'),
-            'supplier_id' => $p['supplier_id'],
+            'supplier_id' => 0,
             'supplier_product_url' => $p['supplier_product_url'],
             'views' => 0,
         ));
@@ -176,19 +188,19 @@ class Product_model extends CI_Model
     }
     
     
-    public function random($limit = 20)
-    {
-		$data = array(); 
-        $this->db->order_by("RAND()", "desc"); 
-        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
-		foreach($data['product_info'] as $i=>$p)
-		{
-            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
-			$data['products'][] = $this->load->view('product/product_grid_item', $p, TRUE);
-		}
-        $data['name'] = 'random'.  random_string();
-		return $this->load->view('product/product_showcase', $data, TRUE);
-    }
+//    public function random($limit = 20)
+//    {
+//		$data = array(); 
+//        $this->db->order_by("RAND()", "desc"); 
+//        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+//		foreach($data['product_info'] as $i=>$p)
+//		{
+//            $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
+//			$data['products'][] = $this->load->view('product/product_grid_item', $p, TRUE);
+//		}
+//        $data['name'] = 'random'.  random_string();
+//		return $this->load->view('product/product_showcase', $data, TRUE);
+//    }
     
     private function _add_product_prop($pid, $key, $values = array())
     {
@@ -220,7 +232,7 @@ class Product_model extends CI_Model
 	{
 		$data = array();
         $this->db->order_by("bought", "desc"); 
-        $data['product_info'] = $this->db->get('_sold_product', $limit, 0)->result_array();
+        $data['product_info'] = $this->db->get_where('_sold_product', array('status' => 'A'), $limit, 0)->result_array();
 		foreach($data['product_info'] as $i=>$p)
 		{
             $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
@@ -235,7 +247,7 @@ class Product_model extends CI_Model
     {
 		$data = array(); 
         $this->db->order_by("RAND()", "desc"); 
-        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+        $data['product_info'] = $this->db->get('_product_info', $limit, 0)->result_array();
 		foreach($data['product_info'] as $i=>$p)
 		{
             $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';
@@ -250,7 +262,7 @@ class Product_model extends CI_Model
     {
         $data = array(); 
         $this->db->order_by("views", "desc"); 
-        $data['product_info'] = $this->db->get('product', $limit, 0)->result_array();
+        $data['product_info'] = $this->db->get('_product_info', $limit, 0)->result_array();
 		foreach($data['product_info'] as $i=>$p)
 		{
             $p['img'] = base_url().'images/products/'.$p['product_id'].'/thumb.jpg';

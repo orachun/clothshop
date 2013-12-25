@@ -77,6 +77,7 @@
             <ul>
               <li><a href="<?php echo base_url(); ?>index.php/admin/supplier">Suppliers</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/category">Category</a></li>
+              <li><a href="<?php echo base_url(); ?>index.php/admin/products">Product List</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/add_product_form">Add Product</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/store_order">Store Order</a></li>
               <li><a href="<?php echo base_url(); ?>index.php/admin/store_order_products">Store Order Products</a></li>
